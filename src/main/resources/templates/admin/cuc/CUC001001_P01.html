@@ -1,0 +1,116 @@
+<div id="CUC001001_P01" class="modal fade">
+	<script src="/static/admin/cuc/CUC001001_P01.js"></script>
+
+	<div
+		class="modal-dialog modal-dialog-centered modal-lg"
+		tabindex="-1"
+	>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">
+					<span name="title">약관번호수신내역 상세</span>
+					<span name="pageCd" style="color: var(--bs-modal-header-bg);"></span>
+				</h1>
+				<button type="button" class="btn-close" onclick="CUC001001_P01.close()"></button>
+			</div>
+			<div class="modal-body p-4" style="max-height: 500px; overflow-y: auto;">
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label">수신ID</label>
+						<input
+							type="text"
+							class="form-control"
+							disabled
+							data-field="indvClusRcvId"
+							name="indvClusRcvId"
+						/>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label">수신일자</label>
+						<input
+							type="text"
+							class="form-control"
+							disabled
+							data-field="rcmYmd"
+							name="rcmYmd"
+						/>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label">약관번호</label>
+						<div class="d-flex align-items-center">
+							<input
+								type="text"
+								class="form-control"
+								disabled
+								data-field="mxtrClusCd"
+								name="mxtrClusCd"
+								style="min-width: 77px;"
+							/>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label">유입경로</label>
+						<input
+							type="text"
+							class="form-control"
+							disabled
+							data-field="sndurl"
+							name="sndurl"
+						/>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label">상품</label>
+						<div class="d-flex align-items-center">
+							<input
+								type="text"
+								class="form-control"
+								disabled
+								data-field="cmpnyNm"
+								name="cmpnyNm"
+								style="width: 30%;"
+							/>
+							<input
+								type="text"
+								class="form-control ms-1"
+								disabled
+								data-field="mncntrctSpccNm"
+								name="mncntrctSpccNm"
+								style="width: 70%;"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label">상품약관생성내역</label>
+						<div class="datatable-wrapper">
+							<div
+								class="datatable-container ag-theme-alpine"
+								data-field="indvClusCrtMppgLst"
+								data-type="grid"
+								style="height: 200px;"
+							>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button"class="btn btn-primary" style="width: 100px; height:38px;" onclick="CUC001001_P01.close()">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+.cell-span {
+	background-color: #00e5ff !important;
+}
+</style>

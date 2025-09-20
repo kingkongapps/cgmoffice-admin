@@ -1,0 +1,66 @@
+<div id="SYS003001_M01">
+	<script src="/static/admin/sys/SYS003001_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-4" style="" name="grpCdDtl_01">
+		<div class="card-header">
+			비밀번호변경
+		</div>
+
+	    <div class="card-body">
+
+			<div class="row mb-3">
+				<div class="col-md-6">
+				  <label class="form-label mb-2">현재 비밀번호<span class="text-danger ms-1">*</span></label>
+				  <div class="d-flex align-items-center gap-2">
+				    <input type="password"  maxlength="50" class="form-control" name="pwCur" data-type="text" style="flex: 1; " onkeydown="SYS003001_M01.noSpaceForm(event);">
+				  </div>
+				</div>
+				<div class="col-md-6">
+				  <label class="form-label mb-2">신규 비밀번호<span class="text-danger ms-1">*</span></label>
+				  <div class="d-flex align-items-center gap-2">
+				    <input type="password"  maxlength="50" class="form-control" name="pwNew" data-type="text" style="flex: 1; " onkeydown="SYS003001_M01.noSpaceForm(event);">
+				  </div>
+				</div>
+			</div>
+
+
+			<div class="row mb-3">
+				<div class="col-md-6">
+				  <label class="form-label mb-2">비밀번호 확인<span class="text-danger ms-1">*</span></label>
+				  <div class="d-flex align-items-center gap-2">
+				    <input type="password"  maxlength="50" class="form-control" name="pwCof" data-type="text" style="flex: 1; " onkeydown="SYS003001_M01.noSpaceForm(event);">
+				  </div>
+				</div>
+			</div>
+
+			<ul>
+				<li>8자 이상 15자 이내 입력</li>
+				<li>영문, 숫자, 특수문자 중 2종류 혼합</li>
+				<li>3자 이상 연속/동일한 문자, 숫자는 사용할 수 없음</li>
+			</ul>
+
+			<div class="d-flex justify-content-end">
+				<button
+					type="button"
+					class="btn btn-primary"
+					name="save"
+					onclick="SYS003001_M01.changePassword()"
+					style="min-width: 80px;"
+					data-auth="I"
+				>
+					변경
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

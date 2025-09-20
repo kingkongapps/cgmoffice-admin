@@ -1,0 +1,111 @@
+<div id="FLE001002_M01">
+	<script src="/static/admin/fle/FLE001002_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-4">
+		<div class="card-header">
+			PDF파일비교
+		</div>
+		<div class="card-body">
+			<div class="row mb-4">
+				<div class="col-md-3">
+					<input
+						type="text"
+						class="form-control"
+						name="fileNm01"
+						disabled
+					/>
+				</div>
+				<div class="col-md-1 d-flex align-items-end" style="display: flex;justify-content:flex-end;">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						onclick="document.querySelector(`#FLE001002_M01 [name='pdf-file01']`).click()"
+						data-auth="S"
+					>
+						파일선택
+					</button>
+					<input
+						type="file"
+						name="pdf-file01"
+						style="display: none;"
+						accept=".pdf"
+						onchange="FLE001002_M01.setFile01()"
+						data-auth="S"
+					/>
+				</div>
+				<div class="col-md-3">
+					<input
+						type="text"
+						class="form-control"
+						name="fileNm02"
+						disabled
+					/>
+				</div>
+				<div class="col-md-1 d-flex align-items-end" style="display: flex;justify-content:flex-end;">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						onclick="document.querySelector(`#FLE001002_M01 [name='pdf-file02']`).click()"
+						data-auth="S"
+					>
+						파일선택
+					</button>
+					<input
+						type="file"
+						name="pdf-file02"
+						style="display: none;"
+						accept=".pdf"
+						onchange="FLE001002_M01.setFile02()"
+						data-auth="S"
+					/>
+				</div>
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-1 d-flex align-items-end" style="display: flex;justify-content:flex-end;">
+					<button
+						type="button"
+						class="btn btn-primary"
+						onclick="FLE001002_M01.comparePDFs()"
+						data-auth="S"
+					>
+						PDF 비교
+					</button>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<div class="col-md-4">
+					<span>[PDF 1]</span>
+				</div>
+				<div class="col-md-4">
+					<span>[PDF 2]</span>
+				</div>
+				<div class="col-md-4">
+					<span>[비교결과]</span>
+				</div>
+			</div>
+
+			<div class="row" style="height: calc(100% - 100px);overflow-y: auto;">
+				<div class="col-md-4">
+					<div name="pdfContainer01" style="width: 100%;overflow-y: auto;"></div>
+				</div>
+				<div class="col-md-4">
+					<div name="pdfContainer02" style="width: 100%;overflow-y: auto;"></div>
+				</div>
+				<div class="col-md-4">
+					<div name="pdfContainerDiff" style="width: 100%;overflow-y: auto;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

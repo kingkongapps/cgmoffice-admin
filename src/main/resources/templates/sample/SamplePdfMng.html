@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{sample/layouts/SampleDefaultLayout}"
+>
+<th:block layout:fragment="content">
+<h3>PDF관리 샘플페이지</h3>
+<hr style="border: double;"/>
+<div>
+	pdf 파일 선택 : <input type="file" id="inputPdf" /><br/>
+	<button style="margin-top: 10px;" onclick="splitPdf()">파일업로드</button><br/>
+	<br/>
+	pdf 임시폴더 : <input type="text" id="taskDir" /><br/>
+</div>
+<hr/>
+<div>
+	<button style="margin-top: 10px;" onclick="delTaskDir()">임시폴더 삭제</button>
+</div>
+<hr/>
+<div>
+	합본대상 01 : <input type="text" id="fileNm01" /><br/>
+	합본대상 02 : <input type="text" id="fileNm02" /><br/>
+	합본대상 03 : <input type="text" id="fileNm03" /><br/>
+	<br/>
+	저장할 파일명 : <input type="text" id="saveFileNm" value="PDF 합본 테스트"/><br/>
+	저장할 파일 접두어 : <input type="text" id="prefix" value="3011111" /><br/>
+	<button style="margin-top: 10px;" onclick="mergePdf()">합본</button>
+</div>
+<hr/>
+<script>
+	async function splitPdf() {
+		const inputPdf = document.getElementById("inputPdf").files[0];
+
+		if(!inputPdf) {
+			await CMMN.alert("pdf 파일을 선택해 주세요.");
+			return;
+		}
+
+		const params = {
+			inputPdf,
+		}
+		
+		const response = await CMMN.api.post('/api/cnt/prdtClusPdfMng/split', { params });
+		console.log(response);
+		
+		document.getElementById('taskDir').value = response.data.taskDir;
+		document.getElementById("fileNm01").value = response.data.previewList[1].fileNm;
+		document.getElementById("fileNm02").value = response.data.previewList[0].fileNm;
+		document.getElementById("fileNm03").value = response.data.previewList[3].fileNm;
+	}
+	
+	async function delTaskDir() {
+		const taskDir = document.getElementById("taskDir").value;
+
+		if(!taskDir) {
+			await CMMN.alert("삭제할 pdf 임시폴더를 입력해주세요.");
+			return;
+		}
+
+		const response = await CMMN.api.delete(`/api/common/file/deleteDir?targetDir=${taskDir}`);
+		console.log(response);
+	}
+	
+	async function mergePdf() {
+		const taskDir = document.getElementById("taskDir").value;
+		
+		const fileNm01 = document.getElementById("fileNm01").value;
+		const fileNm02 = document.getElementById("fileNm02").value;
+		const fileNm03 = document.getElementById("fileNm03").value;
+
+		const saveFileNm = document.getElementById("saveFileNm").value;
+		const prefix = document.getElementById("prefix").value;
+		
+		if(!taskDir) {
+			await CMMN.alert("분할된 pdf가 존재하는 서버측 임시작업폴더를 입력해주세요.");
+			return;
+		}
+		if(!saveFileNm) {
+			await CMMN.alert("저장할 파일명을 입력해주세요.");
+			return;
+		}
+		if(!prefix) {
+			await CMMN.alert("저장할 파일 접두어를 입력해주세요.");
+			return;
+		}
+		
+		const fileNmList = [ fileNm01, fileNm02, fileNm03]
+		
+		const params = {
+			taskDir,
+			fileNmList: [ fileNm01, fileNm02, fileNm03],
+			prefix,
+			saveFileNm,
+		}
+		
+		const response = await CMMN.api.post('/api/cnt/prdtClusPdfMng/merge', { params });
+		console.log(response);
+		
+	}
+</script>
+</th:block>
+</html>

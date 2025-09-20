@@ -1,0 +1,55 @@
+.bg-image {
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+
+.hover-shadow:hover {
+    box-shadow: var(--mdb-image-hover-shadow-box-shadow);
+    transition: var(--mdb-image-hover-shadow-transition);
+}
+
+.hover-shadow {
+    --mdb-image-hover-shadow-box-shadow: 0 2px 15px -3px rgba(0,0,0,0.16),0 10px 20px -2px rgba(0,0,0,0.1);
+    --mdb-image-hover-shadow-transition: all 0.3s ease-in-out;
+}
+
+.hover-zoom {
+    --mdb-image-hover-zoom-transition: all 0.3s linear;
+    --mdb-image-hover-zoom-transform: scale(1.1)
+}
+
+.hover-zoom img,.hover-zoom video {
+    transition: var(--mdb-image-hover-zoom-transition)
+}
+
+.hover-zoom:hover img,.hover-zoom:hover video {
+    transform: var(--mdb-image-hover-zoom-transform)
+}
+
+.hover-overlay .mask:hover {
+    opacity: 1;
+}
+.hover-overlay .mask {
+    --mdb-image-hover-transition: all 0.3s ease-in-out;
+    opacity: 0;
+    transition: var(--mdb-image-hover-transition);
+}
+.mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-attachme;
+}
+
+a:hover {
+    color: var(--mdb-link-hover-color);
+    text-decoration: none
+}

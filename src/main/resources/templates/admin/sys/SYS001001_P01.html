@@ -1,0 +1,74 @@
+<div id="SYS001001_P01" class="modal fade">
+	<script src="/static/admin/sys/SYS001001_P01.js"></script>
+	<div
+		class="modal-dialog modal-dialog-centered modal-lg"
+		tabindex="-1"
+	>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">
+					<span name="title"></span>
+					<span name="pageCd" style="color: var(--bs-modal-header-bg);"></span>
+				</h1>
+				<button type="button" class="btn-close" onclick="SYS001001_P01.close()"></button>
+			</div>
+			<div class="modal-body p-4" style="max-height: 400px; overflow-y: auto;">
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label">회사코드<span class="text-danger ms-1">*</span></label>
+						<input
+							type="text"
+							class="form-control"
+							data-field="cd"
+							data-type="text"
+							onkeyup="CMMN.onlyEngNumToUppercase(this, 10)"
+						/>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label">회사명<span class="text-danger ms-1">*</span></label>
+						<input type="text" maxlength="33" class="form-control" data-field="cdNm" data-type="text">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label">사용여부</label>
+						<select class="form-select" data-field="useYn" data-type="select">
+							<option value="Y">사용</option>
+							<option value="N">미사용</option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label">정렬순서<span class="text-danger ms-1">*</span></label>
+						<input type="text" class="form-control" onkeyup="CMMN.onlyNumber(this, 3)" data-field="sortNo" data-type="text">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label">사업자번호</label>
+						<input type="text" maxlength="50" class="form-control" data-field="cdVal1" data-type="text">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label">담당자</label>
+						<input type="text" maxlength="50" class="form-control" data-field="cdVal3" data-type="text">
+					</div>
+					<div class="col-md-6">
+						<label class="form-label">전화번호</label>
+						<input type="text" maxlength="50" class="form-control" data-field="cdVal2" data-type="text">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label">회사설명</label>
+						<textarea class="form-control" maxlength="133" rows="2" data-field="cdDesc" data-type="text"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger w-80px me-2" name="cancel" onclick="SYS001001_P01.close()">취소</button>
+				<button type="button" class="btn btn-primary w-80px" name="save" onclick="SYS001001_P01.save()">저장</button>
+			</div>
+		</div>
+	</div>
+</div>

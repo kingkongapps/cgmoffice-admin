@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript example</title>
+		<meta charSet="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<style media="only screen">
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            html {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                overflow: auto;
+            }
+
+            body {
+                padding: 1rem;
+                overflow: auto;
+            }
+        </style>
+		<link rel="stylesheet" href="styles.css"/>
+	</head>
+	<body>
+		<div class="example-wrapper">
+			<div style="margin-bottom: 1rem">
+				<div>
+					<button onclick="sortByAthleteAsc()">Athlete Ascending</button>
+					<button onclick="sortByAthleteDesc()">Athlete Descending</button>
+					<button onclick="sortByCountryThenSport()">Country, then Sport</button>
+					<button onclick="sortBySportThenCountry()">Sport, then Country</button>
+				</div>
+				<div style="margin-top: 0.25rem">
+					<button onclick="clearSort()">Clear Sort</button>
+					<button onclick="saveSort()">Save Sort</button>
+					<button onclick="restoreFromSave()">Restore from Save</button>
+				</div>
+			</div>
+			<div id="myGrid" class="ag-theme-alpine">
+			</div>
+		</div>
+		<script>var __basePath = './';</script>
+		<script src="../../../ag-grid-community.min.js">
+		</script>
+		<script src="../../olympic-winners.js"></script>
+		<script src="main.js">
+		</script>
+	</body>
+	<link rel="stylesheet" href="styles.css"/>
+</html>

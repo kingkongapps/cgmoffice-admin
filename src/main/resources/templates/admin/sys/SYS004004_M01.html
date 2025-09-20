@@ -1,0 +1,93 @@
+<div id="SYS004004_M01">
+	<script src="/static/admin/sys/SYS004004_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-4">
+		    <div class="card-body">
+		        <div class="datatable-wrapper">
+					<div class="row" name="lgnHist_01">
+						<div class="col-md-3 my-2">
+							<select data-auth="S" class="datatable-selector" style="width: 100%;" name="searchClcd" onchange="SYS004004_M01.change()">
+								<option value="1">
+									아이디
+								</option>
+								<option value="2">
+									이름
+								</option>
+								<option value="3">
+									접속일시
+								</option>
+							</select>
+						</div>
+						<div class="col-md-7 my-2">
+							<input type="text"
+								class="form-control"
+								style="width: 100%;"
+								name="searchData"
+								placeholder="검색어를 입력해주세요"
+								onkeyup="if(event.key === 'Enter') SYS004004_M01.pageToFirst()"
+								data-auth="S"
+								maxlength="1000"
+							>
+							<input
+								type="text"
+								class="form-control"
+								name="searchDataYmd"
+								data-field="searchDataYmd"
+								data-type="date"
+								onkeyup="CMMN.onlyDateFormat(this)"
+								style="display: none;"
+								data-auth="S"
+								/>
+						</div>
+						<div class="col-md-2 my-2 d-flex align-items-end">
+							<button data-auth="S" class="btn btn-primary me-1" style="width: 80px; height:38px;" onclick="SYS004004_M01.pageToFirst()">검색</button>
+						</div>
+					</div>
+
+					<!--총건수-->
+					<h6 name="SYS004004_M01_totalCount" class="mt-3"></h6>
+
+
+					<div
+						class="datatable-container ag-theme-alpine"
+						name="table-content"
+						style="height: 480px;"
+					>
+					</div>
+
+					<div
+						class="datatable-bottom position-relative mt-3"
+					>
+						<nav class="datatable-pagination">
+							<ul
+								class="datatable-pagination-list d-flex align-items-center mb-0"
+								name="paginator"
+							>
+
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+

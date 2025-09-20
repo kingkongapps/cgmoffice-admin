@@ -1,0 +1,176 @@
+<div id="CNT002001_M01">
+	<script src="/static/admin/cnt/CNT002001_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5" style="width: 44.66666667%;">
+			<div class="card p-2 mb-2">
+				<div class="card mb-3">
+					<div class="card-header ps-3">
+						약관항목검색
+					</div>
+					<div class="card-body pb-0">
+						<div class="row">
+							<div class="col-md-4 mb-3">
+								<select
+									data-auth="S"
+									class="datatable-selector"
+									name="searchCmpnyCode"
+									style="width: 100%;"
+									onchange="CNT002001_M01.search_01()"
+								>
+								</select>
+							</div>
+							<div class="col-md-4 mb-3">
+								<select
+									data-auth="S"
+									class="datatable-selector"
+									name="searchClusItmClcd"
+									style="width: 100%;"
+									onchange="CNT002001_M01.search_01()"
+								>
+								</select>
+							</div>
+							<div class="col-md-4 mb-3" style="display: none;">
+								<select
+									data-auth="S"
+									class="datatable-selector"
+									name="rquSelYn"
+									style="width: 100%;"
+									onchange="CNT002001_M01.search_01()"
+								>
+									<option value="Y">필수(종속)</option>
+									<option value="N">선택(독립)</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-8 mb-3">
+								<input type="text"
+									data-auth="S"
+									class="form-control"
+									name="searchPrdtNm"
+									placeholder="검색할 약관항목명"
+									onkeyup="if(event.key === 'Enter') CNT002001_M01.search_01()"
+									maxlength="1000"
+								>
+							</div>
+							<div class="col-md-4 mb-3">
+								<button
+									data-auth="S"
+									class="btn btn-primary me-1 px-3"
+									onclick="CNT002001_M01.search_01()"
+								>
+									검색
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-body p-0 m-0">
+					<div class="tatable-wrapper">
+						<div
+							class="datatable-container ag-theme-alpine"
+							name="table-content-01"
+							style="height: 380px;"
+						>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1 d-flex justify-content-center align-items-center" style="min-height: 100%; width: 4.33333333%;">
+			<div>
+				<div class="row my-3">
+					<button
+						class="btn btn-outline-secondary d-flex justify-content-center align-items-center btn_rud_line"
+						style="height: 50px; width: 60px; padding: 0;"
+						onclick="CNT002001_M01.moveToRight()"
+						data-auth="U"
+					>
+						<i class="bi bi-caret-right-fill" style="font-size: 30px;"></i>
+					</button>
+				</div>
+				<div class="row my-3">
+					<button
+						class="btn btn-outline-secondary d-flex justify-content-center align-items-center btn_rud_line"
+						style="height: 50px; width: 60px; padding: 0;"
+						onclick="CNT002001_M01.moveToLeft()"
+						data-auth="U"
+					>
+						<i class="bi bi-caret-left-fill" style="font-size: 30px;"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6" style="width: 51%;">
+			<div class="card p-2 mb-2">
+				<div class="card mb-3">
+					<div class="card-header ps-3">
+						약관항목구성검색
+					</div>
+					<div class="card-body pb-0">
+						<div class="row">
+							<div class="col-md-9 mb-3">
+								<div class="d-flex align-items-center">
+									<label class="form-label mb-0 me-2" style="width: 80px;">주계약</label>
+									<input
+										type="text"
+										class="form-control"
+										name="search_01_prdtCd"
+										readonly
+										style="background-color: #e9ecef;"
+										onclick="CNT002001_M01.CMN_P04_open()"
+										data-auth="S"
+									/>
+								</div>
+							</div>
+							<div class="col-md-3 mb-3">
+								<button
+									class="btn btn-primary me-1 px-3"
+									onclick="CNT002001_M01.CMN_P04_open()"
+									data-auth="S"
+								>
+									검색
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-body p-0 m-0">
+					<div class="datatable-wrapper">
+						<div
+							class="datatable-container ag-theme-alpine"
+							name="table-content-02"
+							style="height: 440px;"
+						>
+						</div>
+						<div class="datatable-bottom position-relative mt-3 mb-1">
+							<button
+								class="btn btn-primary"
+								style="justify-self: anchor-center;width: 120px;"
+								onclick="CNT002001_M01.save()"
+								data-auth="U"
+							>
+								저장
+							</button>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,43 @@
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title id="browser_title">맞춤약관시스템</title>
+	<link th:if="${session.properties.comCode} == 'P07'" rel="shortcut icon" type="image/x-icon" href="/static/ico/shFavicon.ico">
+	<link th:if="${session.properties.comCode} == 'CMMN'" rel="shortcut icon" type="image/x-icon" href="/static/ico/favicon.ico">
+
+	<link href="/static/lib/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+	<link href="/static/lib/bootstrap-icons/1.11.2/font/bootstrap-icons.min.css" rel="stylesheet">
+	<link href="/static/lib/quill/2.0.3/quill.snow.css" rel="stylesheet">
+	<link href="/static/lib/select2/4.1.0-rc.0/select2.min.css" rel="stylesheet">
+	<link href="/static/lib/select2/4.1.0-rc.0/select2-bootstrap-5-theme.min.css" rel="stylesheet">
+
+	<link th:if="${session.properties.isLogin} == 'Y'" th:href="${'/static/css/styles_' + session.properties.comCode + '.css?rscVer=' + session.properties.rscVer}" rel="stylesheet" />
+	<link th:unless="${session.properties.isLogin} == 'Y'" th:href="${'/static/css/styles_CMMN.css?rscVer=' + session.properties.rscVer}" rel="stylesheet" />
+
+	<script src="/static/lib/ag-grid-community/29.3.5/ag-grid-community.min.js"></script>
+	<script src="/static/lib/font-awesome/6.7.2/js/all.js"></script>
+	<script src="/static/lib/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+	<script src="/static/lib/axios/1.8.4/axios.min.js"></script>
+	<script src="/static/lib/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/static/lib/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+	<script src="/static/lib/bootstrap-datepicker/1.10.0/locales/bootstrap-datepicker.ko.min.js"></script>
+	<script src="/static/lib/quill/2.0.3/quill.js"></script>
+	<script src="/static/lib/html2pdf/0.10.3/html2pdf.bundle.min.js"></script>
+	<script src="/static/lib/moment.js/2.29.3/moment.min.js"></script>
+	<script src="/static/lib/select2/4.1.0-rc.0/select2.min.js"></script>
+	<script src="/static/lib/echarts/5.6.0/echarts.min.js"></script>
+	<script src="/static/lib/countUp.js/2.8.2/countUp.umd.js"></script>
+
+	<script src="/static/lib/pdfjs/3.11.174-legacy/build/pdf.js"></script>
+	<script>
+		pdfjsLib.GlobalWorkerOptions.workerSrc =
+		  '/static/lib/pdfjs/3.11.174-legacy/build/pdf.worker.js';
+	</script>
+
+	<script th:src="${'/static/js/commonLib.js?rscVer=' + session.properties.rscVer}"></script>
+	<script th:src="${'/static/js/common.js?rscVer=' + session.properties.rscVer}"></script>
+
+</head>

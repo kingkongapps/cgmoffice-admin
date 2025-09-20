@@ -1,0 +1,65 @@
+<div id="FLE001003_M01">
+	<script src="/static/admin/fle/FLE001003_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-4">
+		<div class="card-header">
+			자동분할파일등록
+		</div>
+		<div class="card-body">
+			<div class="row mb-4">
+				<div class="col-md-9">
+					<input
+						type="text"
+						class="form-control"
+						data-field="prdtCd"
+						data-type="text"
+						name="pdfFile-name"
+						disabled
+					/>
+				</div>
+				<div class="col-md-3 d-flex justify-content-end gap-2">
+					<button type="button"
+						class="btn btn-secondary"
+						onclick="document.querySelector(`#FLE001003_M01 [name='pdf-file']`).click()"
+					>
+						파일선택
+					</button>
+					<input
+						type="file"
+						name="pdf-file"
+						style="display: none;"
+						accept=".pdf"
+						onchange="FLE001003_M01.pdfFileSplit()"
+					/>
+				</div>
+			</div>
+			<div class="row" style="max-height: 450px; overflow-y: auto;">
+				<div class="col-md-12" name="pdf-preview">
+				</div>
+			</div>
+			<div class="row mt-4" name="tool-bar" style="display: none;">
+				<div class="col-md-12 d-flex justify-content-end gap-2">
+					<div>※ 먼저 목차를 선택해 주세요 >>></div>
+					<button
+						type="button"
+						class="btn btn-primary"
+						style="min-width: 100px;"
+						onclick="FLE001003_M01.getTocList()"
+					>
+						목차 리스트 추출
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

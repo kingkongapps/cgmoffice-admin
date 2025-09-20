@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript example</title>
+		<meta charSet="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<style media="only screen">
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            html {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                overflow: auto;
+            }
+
+            body {
+                padding: 1rem;
+                overflow: auto;
+            }
+        </style>
+	</head>
+	<body>
+		<style>
+  /* style would normally go in a .css file, however putting in here to keep example in fewer files */
+
+  /* all of these styles are particular to this example. if copying this example, you don't copy the styles,
+       you should lay out and style your own component as you want yourself. */
+
+  .full-width-panel {
+    /* undo the white-space setting Fresh puts in */
+    white-space: normal;
+    height: 100%;
+    width: 100%;
+    border: 2px solid grey;
+    border-style: ridge;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: darkgray;
+  }
+  .full-width-flag {
+    float: left;
+    padding: 6px;
+  }
+  .full-width-summary {
+    float: left;
+    /*margin-left: 10px;*/
+    margin-right: 10px;
+  }
+  .full-width-panel label {
+    padding-top: 3px;
+    display: inline-block;
+    font-size: 12px;
+  }
+  .full-width-center {
+    overflow-y: scroll;
+    border: 1px solid grey;
+    padding: 2px;
+    height: 100%;
+    box-sizing: border-box;
+    font-family: cursive;
+    background-color: #fafafa;
+  }
+  .full-width-center p {
+    margin-top: 0px;
+  }
+  .full-width-title {
+    font-size: 20px;
+  }
+</style>
+		<div id="myGrid" class="ag-theme-alpine" style="height: 100%">
+		</div>
+		<script>var __basePath = './';</script>
+		<script src="../../../ag-grid-community.min.js">
+		</script>
+		<script src="data.js">
+		</script>
+		<script src="fullWidthCellRenderer.js">
+		</script>
+		<script src="main.js">
+		</script>
+	</body>
+</html>

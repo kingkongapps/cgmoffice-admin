@@ -1,0 +1,173 @@
+<div id="SYS005001_M01">
+	<script src="/static/admin/sys/SYS005001_M01.js"></script>
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-2">
+		<div class="card-header">
+			검색조건
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-4 my-2">
+					<select class="datatable-selector" data-auth="S" style="width: 100%;" name="searchCmpnyCode" onchange="SYS005001_M01.onChangeCmpnyCode()">
+					</select>
+				</div>
+				<div class="col-md-8 my-2 d-flex">
+					<div class="form-check form-check-inline align-self-center">
+						<input data-auth="S" class="form-check-input" type="radio" name="selectCond" id="select_cond_01" value="cond_01" onchange="SYS005001_M01.condChange()" checked>
+						<label class="form-check-label" for="select_cond_01">약관항목조회</label>
+					</div>
+					<div class="form-check form-check-inline align-self-center">
+						<input data-auth="S" class="form-check-input" type="radio" name="selectCond" id="select_cond_02" value="cond_02" onchange="SYS005001_M01.condChange()">
+						<label class="form-check-label" for="select_cond_02">약관항목구성조회</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" name="cond_01">
+				<div class="col-md-3 my-2">
+					<select class="datatable-selector" data-auth="S" style="width: 100%;" name="searchClusItmClcd" onchange="SYS005001_M01.pageToFirst_01()">
+					</select>
+				</div>
+				<div class="col-md-7 my-2">
+					<input type="text"
+						class="form-control"
+						style="width: 100%;"
+						name="searchPrdtNm"
+						data-auth="S"
+						placeholder="검색할 약관항목명 또는 약관항목코드"
+						onkeyup="if(event.key === 'Enter') SYS005001_M01.pageToFirst_01()"
+						maxlength="1000"
+					>
+				</div>
+				<div class="col-md-2 my-2 d-flex align-items-end">
+					<button data-auth="S" class="btn btn-primary me-1" style="width: 80px; height:38px;" onclick="SYS005001_M01.pageToFirst_01()">검색</buttondata-auth="S" >
+				</div>
+			</div>
+			<div class="row" name="cond_02" style="display: none;">
+				<div class="col-md-3 my-2">
+					<select data-auth="S" class="datatable-selector" style="width: 100%;" name="searchPrdtCfcd" onchange="SYS005001_M01.setPrdtList_02()">
+					</select>
+				</div>
+				<div class="col-md-9 my-2">
+					<select data-auth="S" class="datatable-selector" style="width: 100%;" name="searchPrdtCd" onchange="SYS005001_M01.search_02()">
+						<option value="">= 주계약 선택 =</option>
+					</select>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="card mb-4">
+		<div class="card-body" name="cond_01">
+			<div class="datatable-wrapper">
+				<div style="padding-bottom: 1rem;">
+					<div class="row">
+						<div class="col-md-8">
+							<a
+								href="javascript:void(0);"
+								class="btn btn-secondary"
+								data-auth="E"
+								style="min-width: 110px; margin-right: 10px;"
+								onclick="SYS005001_M01.excelDownLoad_01()"
+							>약관항목등록 엑셀다운</a>
+
+							<a
+								href="javascript:void(0);"
+								class="btn btn-secondary"
+								data-auth="E"
+								style="min-width: 110px;"
+								onclick="document.querySelector(`#SYS005001_M01 [name='prdtupexcel01']`).click()"
+							>약관항목등록 엑셀업로드</a>
+							<input
+								type="file"
+								name="prdtupexcel01"
+								style="display: none;"
+								accept=".xlsx"
+								onchange="SYS005001_M01.excelUpLoad_01()"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<!--총건수-->
+				<h6 name="SYS005001_M01_totalCount_1" class="mt-3"></h6>
+
+				<div
+					class="datatable-container ag-theme-alpine"
+					name="table-content-01"
+					style="height: 486px;"
+				>
+				</div>
+
+				<div
+					class="d-flex justify-content-between align-items-center mt-3 w-100"
+				>
+					<div></div>
+					<nav class="datatable-pagination">
+						<ul
+							class="datatable-pagination-list d-flex align-items-center mb-0"
+							name="paginator_01"
+						>
+
+						</ul>
+					</nav>
+					<div></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card-body" name="cond_02" style="display: none;">
+			<div class="datatable-wrapper">
+				<div style="padding-bottom: 1rem;">
+					<div class="d-flex justify-content-start">
+						<a
+							href="javascript:void(0);"
+							class="btn btn-secondary"
+							data-auth="E"
+							style="min-width: 110px; margin-right: 10px;"
+							onclick="SYS005001_M01.excelDownLoad_02()"
+						>
+							약관항목구성등록 엑셀다운
+						</a>
+						<a
+							href="javascript:void(0);"
+							class="btn btn-secondary"
+							data-auth="E"
+							style="min-width: 110px;"
+							onclick="document.querySelector(`#SYS005001_M01 [name='prdtupexcel02']`).click()"
+						>
+							약관항목구성등록 엑셀업로드
+						</a>
+						<input
+							type="file"
+							name="prdtupexcel02"
+							style="display: none;"
+							accept=".xlsx"
+							onchange="SYS005001_M01.excelUpLoad_02()"
+						/>
+					</div>
+				</div>
+
+				<!--총건수-->
+				<h6 name="SYS005001_M01_totalCount_2" class="mt-3"></h6>
+
+				<div
+					class="datatable-container ag-theme-alpine"
+					name="table-content-02"
+					style="height: 486px;"
+				>
+				</div>
+				<div></div>
+		</div>
+	</div>
+</div>

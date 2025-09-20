@@ -1,0 +1,8 @@
+{
+  "name": "ag-grid-packages",
+  "description": "NOTE: This package.json file is solely used by Plunker to look up type definitions.",
+  "dependencies": {
+    "ag-grid-community": "^29.2.0",
+    "ag-grid-enterprise": "^29.2.0"
+  }
+}

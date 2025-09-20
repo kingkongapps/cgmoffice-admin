@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{sample/layouts/SampleDefaultLayout}"
+>
+<th:block layout:fragment="content">
+<h3>엑셀관리 샘플페이지</h3>
+<hr style="border: double;"/>
+<div>
+	<button onclick="excelDn()">엑셀다운로드</button>
+</div>
+<br/>
+<div>
+	<input type="file" id="excelfile"/>
+	<button onclick="excelUp()">엑셀업로드</button>
+	<ul id="exceldata">
+	</ul>
+</div>
+<script th:inline="javascript">
+	
+	async function excelDn() {
+		const responseType = "blob";
+		
+		const params = {
+			userName: "김",
+			excelDownConfig: {
+				fileName: '예제엑셀 02.xlsx',
+				sheetName: '예제엑셀시트',
+				colInfoList: [
+					{ dataColNm: "USER_NAME", exelColNm: "사용자명", width: 256 * 10 }, // width: 글자수 10개(한글은 5개) 넓이
+					{ dataColNm: "USER_AGE", exelColNm: "사용자 나이", width: 256 * 13 }, // width: 글자수 6개(한글은 3개) 넓이
+				],
+			}
+		}
+		
+		const options = { responseType, params };
+		
+		const response = await CMMN.api.post('/api/sample/excelMng/download02', options);
+		CMMN.downloadFileProc(response);
+	}
+
+	async function excelUp() {
+		const excelfile = document.getElementById("excelfile").files[0];
+
+		if(!excelfile) {
+			await CMMN.alert("업로드할 엑셀파일을 선택해 주세요.");
+			return;
+		}
+
+		const params = {
+			excelfile,
+			userName: "김",
+		}
+		const response = await CMMN.api.post('/api/sample/excelMng/upload', { params });
+		console.log(response);
+
+		document.querySelector('#exceldata').innerHTML
+			= response.data.reduce((prev, curr) => {
+				return prev += `
+					<li>
+						${curr.join(" | ")}
+					</li>
+				`
+			}, '');
+	}
+
+</script>
+</th:block>
+</html>

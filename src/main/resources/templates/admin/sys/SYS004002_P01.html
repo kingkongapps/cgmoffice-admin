@@ -1,0 +1,86 @@
+<div id="SYS004002_P01" class="modal fade">
+	<script src="/static/admin/sys/SYS004002_P01.js"></script>
+
+	<div
+		class="modal-dialog modal-dialog-centered modal-xl"
+		tabindex="-1"
+	>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">
+					<span name="title">메시지 등록</span>
+					<span name="pageCd" style="color: var(--bs-modal-header-bg);"></span>
+				</h1>
+				<button type="button" class="btn-close" onclick="SYS004002_P01.close()"></button>
+			</div>
+			<div class="modal-body p-4" style="overflow-y: auto;">
+				<div class="row mb-3">
+					<div class="col-md-10">
+						<label class="form-label">메시지타입<span class="text-danger ms-1">*</span></label>
+						<select class="datatable-selector" style="width: 30%;" name="msgType" onchange="SYS004002_P01.change()">
+						</select>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-10">
+					  <label class="form-label mb-2">메시지ID <span class="text-danger ms-1">*</span></label>
+					  <div class="d-flex align-items-center gap-2">
+					    <input type="text" maxlength="4" class="form-control" name="msgId" data-field="msgId" data-type="text" onblur="SYS004002_P01.msgIdChange()" style="max-width: 200px;">
+					    <button class="btn btn-secondary" name="msgIdChk" onclick="SYS004002_P01.check()" style="min-width: 100px; display: none;"> 중복확인 </button>
+					    <input type="text" maxlength="4" class="form-control d-none" name="msgIdHidden" data-field="msgId" data-type="text">
+					  </div>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label">메시지명<span class="text-danger ms-1">*</span></label>
+						<input type="text" maxlength="33" class="form-control" data-field="msgNm" data-type="text">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label">메시지상세</label>
+						<textarea class="form-control" maxlength="133" rows="3" name="msgDesc" data-field="msgDesc" data-type="text">
+						</textarea>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-danger me-2"
+					name="cancel"
+					onclick="SYS004002_P01.close()"
+					style="min-width: 80px;"
+				>
+					취소
+				</button>
+				<button
+					type="button"
+					class="btn btn-primary"
+					name="save"
+					onclick="SYS004002_P01.save()"
+					style="min-width: 80px;"
+					data-auth="I"
+				>
+					등록
+				</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

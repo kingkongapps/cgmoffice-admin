@@ -1,0 +1,67 @@
+<div id="IDC002001_M01">
+	<script src="/static/admin/idc/IDC002001_M01.js"></script>
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-2">
+		<div class="card-header">
+			검색조건
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-4 my-2">
+					<select class="datatable-selector" data-auth="S" style="width: 100%;" name="searchCmpnyCode" onchange="IDC002001_M01.onChangeCmpnyCode()">
+					</select>
+				</div>
+			</div>
+
+			<div class="row" name="cond_02">
+				<div class="col-md-3 my-2">
+					<select data-auth="S" class="datatable-selector" style="width: 100%;" name="searchPrdtCfcd" onchange="IDC002001_M01.setPrdtList_01()">
+					</select>
+				</div>
+				<div class="col-md-9 my-2">
+					<select data-auth="S" class="datatable-selector" style="width: 100%;" name="searchPrdtCd" onchange="IDC002001_M01.search_01()">
+						<option value="">= 주계약 선택 =</option>
+					</select>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="card mb-4">
+		<div class="card-body" name="cond_01">
+			<div class="datatable-wrapper">
+				<h6 name="IDC002001_M01_totalCount_1" class="mt-3"></h6>
+
+				<div
+					class="datatable-container ag-theme-alpine"
+					name="table-content-01"
+					style="height: 486px;"
+				>
+				</div>
+
+				<div
+					class="d-flex justify-content-between align-items-center mt-3 w-100"
+				>
+					<div></div>
+					<nav class="datatable-pagination">
+						<ul
+							class="datatable-pagination-list d-flex align-items-center mb-0"
+							name="paginator_01"
+						>
+						</ul>
+					</nav>
+					<div></div>
+				</div>
+			</div>
+		</div>
+</div>

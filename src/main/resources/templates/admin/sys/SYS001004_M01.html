@@ -1,0 +1,93 @@
+<div id="SYS001004_M01">
+	<script src="/static/admin/sys/SYS001004_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-4" name="grpCdDtl_01">
+		<div class="card-header">
+			QR코드관리
+		</div>
+
+		<div class="card-body">
+
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label class="form-label mb-2">QR이미지사용번호<span class="text-danger ms-1">*</span></label>
+					<div class="d-flex align-items-center gap-2">
+						<input type="text" class="form-control" name="cd" placeholder="QR이미지사용번호 입력" data-type="text" disabled>
+					</div>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label class="form-label mb-2">콘텐츠명<span class="text-danger ms-1">*</span></label>
+					<div class="d-flex align-items-center gap-2">
+						<input type="text" class="form-control" name="cdNm" placeholder="콘텐츠명 입력" data-type="text" maxlength="33">
+					</div>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label class="form-label mb-2">QR URL<span class="text-danger ms-1">*</span></label>
+				<div class="col-md-10">
+					<input type="text"
+						class="form-control"
+						name="qrUrl"
+						placeholder="QR URL 입력"
+						onkeyup="if(event.keyCode == '13'){SYS001004_M01.getQrCode();} else {this.value = this.value.replace(/[가-힣ㄱ-ㅎㅏ-ㅣ]/g, '')};"
+						maxlength="1000"
+					>
+				</div>
+				<div class="col-md-2 d-flex justify-content-end">
+					<button
+						class="btn btn-primary me-1"
+						onclick="SYS001004_M01.getQrCode()"
+					>
+						QR 이미지 보기
+					</button>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label class="form-label mb-2">QR 이미지<span class="text-danger ms-1">*</span></label>
+					<div class="d-flex align-items-center gap-2">
+						<img id="qrImg"></img>
+					</div>
+				</div>
+			</div>
+
+			<div class="d-flex justify-content-end">
+				<button
+					type="button"
+					class="btn btn-secondary me-2"
+					name="reset"
+					onclick="SYS001004_M01.reset()"
+					style="min-width: 80px;"
+					data-auth="U"
+				>
+					초기화
+				</button>
+				<button
+					type="button"
+					class="btn btn-primary"
+					name="save"
+					onclick="SYS001004_M01.saveQrCode()"
+					style="min-width: 80px;"
+					data-auth="U"
+				>
+					수정
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

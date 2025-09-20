@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{sample/layouts/SampleDefaultLayout}"
+>
+<th:block layout:fragment="content">
+	
+<h3>로그인 샘플페이지</h3>
+<hr style="border: double;"/>
+<div>
+	<h3>* 테스트용 계정정보: abc/123</h3>
+</div>
+<div>
+	아이디: <input type="text" id="memId" value="admin"/>
+</div>
+<div>
+	비밀번호: <input type="text" id="passwd" value="admin"/>
+</div>
+<br/>
+<div>
+	<button onclick="login()">로그인</button>
+</div>
+<div>
+	<button onclick="logout()">로그아웃</button>
+</div>
+<hr/>
+<div>
+	<button onclick="getMyInfo()">내정보 조회</button>
+	<div>
+		<ul id="userInfo">
+		</ul>
+	</div>
+</div>
+<script>
+
+	async function login() {
+		const memId = document.getElementById('memId').value;
+		const passwd = document.getElementById('passwd').value;
+		if(!memId) {
+			await CMMN.alert('아이디를 입력해주세요.');
+			return;
+		}
+		if(!passwd) {
+			await CMMN.alert('비밀번호를 입력해주세요.');
+			return;
+		}
+
+		const params = { memId, passwd };
+
+		const response = await CMMN.login(params);
+
+		console.log('>>> login response : ', response);
+
+		await CMMN.alert('로그인 성공');
+	}
+
+	async function logout() {
+		await CMMN.logout();
+		await CMMN.alert('로그아웃이 완료되었습니다.');
+	}
+	
+	async function getMyInfo() {
+		document.getElementById('userInfo').innerHTML = '';
+
+		const response = await CMMN.api.get('/api/common/user/info');
+		console.log('>>> myinfo response : ', response);
+
+		document.getElementById('userInfo').innerHTML = Object.entries(response.data).reduce((prev, curr) => {
+			const key = curr[0];
+			const value = curr[1];
+
+			if(!Array.isArray(value)) {
+				return prev += `
+					<li>
+						${key}: ${value}
+					</li>
+				`;
+			} else {
+				return prev;
+			}
+
+		}, '');
+	}
+</script>
+
+</th:block>
+</html>

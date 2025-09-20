@@ -1,0 +1,94 @@
+<div id="FLE001001_P01" class="modal fade">
+	<script src="/static/admin/fle/FLE001001_P01.js"></script>
+
+	<div
+		class="modal-dialog modal-dialog-centered modal-xl"
+		tabindex="-1"
+	>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">
+					<span name="popupTitle">약관항목파일생성</span>
+					<span name="pageCd" style="color: var(--bs-modal-header-bg);"></span>
+				</h1>
+				<button type="button" class="btn-close" onclick="FLE001001_P01.close()"></button>
+			</div>
+			<div class="modal-body p-4">
+				<div class="row mb-4">
+					<div class="col-md-9">
+						<input
+							type="text"
+							class="form-control"
+							data-field="prdtCd"
+							data-type="text"
+							name="pdfFile-name"
+							disabled
+						/>
+					</div>
+					<div class="col-md-3">
+						<button type="button"
+							class="btn btn-secondary"
+							onclick="document.querySelector(`#FLE001001_P01 [name='pdf-file']`).click()"
+						>
+							파일선택
+						</button>
+						<input
+							type="file"
+							name="pdf-file"
+							style="display: none;"
+							accept=".pdf"
+							onchange="FLE001001_P01.pdfFileSplit()"
+						/>
+					</div>
+				</div>
+				<div class="row" style="max-height: 450px; overflow-y: auto;">
+					<div class="col-md-12" name="pdf-preview">
+					</div>
+				</div>
+				<div class="row mt-4" name="tool-bar">
+					<div class="col-md-2">
+						<button
+							type="button"
+							class="btn btn-danger"
+							style="width: 100px;"
+							onclick="FLE001001_P01.close()"
+						>
+							닫기
+						</button>
+					</div>
+					<div class="col-md-10 d-flex justify-content-end gap-2">
+						<div class="tooltip-wrapper">
+							<span class="tooltip-icon">?</span>
+							<div class="tooltip-content">
+								파일명 입력 시 띄어쓰기, '-', '_' 외 특수문자 사용 불가
+							</div>
+						</div>
+						<input
+							type="text"
+							class="form-control"
+							name="saveFileNm"
+							placeholder="저장할 파일명"
+							style="max-width: 100%;"
+						/>
+						<button
+							type="button"
+							class="btn btn-primary"
+							style="min-width: 100px;"
+							onclick="FLE001001_P01.mergeServer()"
+						>
+							저장(서버)
+						</button>
+						<button
+							type="button"
+							class="btn btn-primary"
+							style="min-width: 100px;"
+							onclick="FLE001001_P01.mergePC()"
+						>
+							저장(PC)
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

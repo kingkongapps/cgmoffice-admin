@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript example</title>
+		<meta charSet="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<style media="only screen">
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            html {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                overflow: auto;
+            }
+
+            body {
+                padding: 1rem;
+                overflow: auto;
+            }
+        </style>
+		<link rel="stylesheet" href="styles.css"/>
+	</head>
+	<body>
+		<div class="example-wrapper">
+			<div class="example-header">
+				<span> Rows to Pin on Top: </span>
+				<select onchange="onPinnedRowTopCount()" id="top-row-count" style="margin-left: 10px; margin-right: 20px">
+					<option value="0">0</option>
+					<option value="1" selected>1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+				<span> Rows to Pin on Bottom: </span>
+				<select onchange="onPinnedRowBottomCount()" id="bottom-row-count" style="margin-left: 10px">
+					<option value="0">0</option>
+					<option value="1" selected>1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+			</div>
+			<div id="myGrid" class="ag-theme-alpine">
+			</div>
+		</div>
+		<script>var __basePath = './';</script>
+		<script src="../../../ag-grid-community.min.js">
+		</script>
+		<script src="../../olympic-winners.js"></script>
+		<script src="customPinnedRowRenderer.js">
+		</script>
+		<script src="main.js">
+		</script>
+	</body>
+	<link rel="stylesheet" href="styles.css"/>
+</html>

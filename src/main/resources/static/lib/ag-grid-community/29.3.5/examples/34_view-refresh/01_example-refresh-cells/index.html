@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript example</title>
+		<meta charSet="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<style media="only screen">
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            html {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                overflow: auto;
+            }
+
+            body {
+                padding: 1rem;
+                overflow: auto;
+            }
+        </style>
+		<link rel="stylesheet" href="styles.css"/>
+	</head>
+	<body>
+		<div class="example-wrapper">
+			<div class="example-header">
+				<div>
+					<button onclick="scrambleAndRefreshAll()">Scramble &#x26; Refresh All</button>
+					<button onclick="scrambleAndRefreshLeftToRight()">
+        Scramble &#x26; Refresh Left to Right
+      </button>
+					<button onclick="scrambleAndRefreshTopToBottom()">
+        Scramble &#x26; Refresh Top to Bottom
+      </button>
+				</div>
+				<div>
+					<label>
+						<input type="checkbox" id="forceRefresh">
+        Force Refresh
+      </label>
+						<label>
+							<input type="checkbox" id="suppressFlash">
+        Suppress Flash
+      </label>
+						</div>
+					</div>
+					<div id="myGrid" class="ag-theme-alpine-dark">
+					</div>
+				</div>
+				<script>var __basePath = './';</script>
+				<script src="../../../ag-grid-community.min.js">
+				</script>
+				<script src="main.js">
+				</script>
+			</body>
+			<link rel="stylesheet" href="styles.css"/>
+		</html>

@@ -1,0 +1,241 @@
+<div id="CMN000000_P05" class="modal fade">
+	<script src="/static/admin/cmn/CMN000000_P05.js"></script>
+
+	<div
+		class="modal-dialog modal-dialog-centered modal-lg"
+		tabindex="-1"
+	>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">
+					<span name="title">약관항목등록 - 수정/상세</span>
+					<span name="pageCd" style="color: var(--bs-modal-header-bg);"></span>
+				</h1>
+				<button type="button" class="btn-close" onclick="CMN000000_P05.close()"></button>
+			</div>
+			<div class="modal-body p-4" style="max-height: 500px; overflow-y: auto;">
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label">
+							<span name="nprdtNmLabel">약관항목명</span><span class="text-danger ms-1">*</span>
+						</label>
+						<input type="text" maxlength="50" class="form-control" data-field="nprdtNm" data-type="text">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label">회사명<span class="text-danger ms-1">*</span></label>
+						<select class="form-select" data-field="cmpnyCode" data-type="select">
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label class="form-label">약관항목선택<span class="text-danger ms-1">*</span></label>
+						<select class="form-select" data-field="mnspccCfcd" data-type="select">
+						</select>
+					</div>
+					<div class="col-md-3" style="display: none;">
+						<label class="form-label">기타항목선택<span class="text-danger ms-1">*</span></label>
+						<select class="form-select" data-field="clusItmClcd" data-type="select">
+						</select>
+					</div>
+				</div>
+				<div class="row mb-3" style="display: none;">
+					<div class="col-md-6">
+						<label class="form-label">페이지 하단 높이지정</label>
+						<input
+							type="text"
+							maxlength="6"
+							class="form-control"
+							data-field="pageFld"
+							data-type="text"
+							onkeyup="CMMN.onlyNumber(this, this.maxLength)"
+						>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label">상품구분<span class="text-danger ms-1">*</span></label>
+						<select class="form-select" data-field="prdtCfcd" data-type="select">
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label class="form-label">필수여부</label>
+						<select class="form-select" data-field="rquSelYn" name="rquSelYn" onchange="CMN000000_P05.changeRquSelYn(this)">
+							<option value="Y">필수(종속)</option>
+							<option value="N">선택(독립)</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label class="form-label">약관항목코드<span class="text-danger ms-1">*</span></label>
+						<div class="d-flex align-items-center">
+							<input
+								type="text"
+								class="form-control"
+								disabled
+								name="prefixPrdtCd"
+								style="min-width: 77px;"
+							/>
+							<input
+								type="text"
+								class="form-control ms-1"
+								name="suffixPrdtCd"
+								style="min-width: 65px;"
+								maxlength="4"
+								onkeyup="CMMN.onlyNumber(this, 4)"
+							/>
+							<input
+								type="text"
+								class="form-control"
+								disabled
+								name="prdtCd"
+								style="max-width: 140px;"
+							/>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label">판매시작일<span class="text-danger ms-1">*</span></label>
+						<input
+							type="text"
+							class="form-control"
+							data-field="pmBeginYmd"
+							data-type="date"
+							onkeyup="CMMN.onlyDateFormat(this)"
+						/>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label">판매종료일</label>
+						<input
+							type="text"
+							class="form-control"
+							data-field="pmStopYmd"
+							data-type="date"
+							onkeyup="CMMN.onlyDateFormat(this)"
+						/>
+					</div>
+				</div>
+				<div class="row mb-4">
+					<div class="col-md-12">
+						<label class="form-label">약관항목파일</label>
+						<div>
+							<div class="row">
+								<div class="col-md-12 mb-2">
+									<input
+										type="text"
+										class="form-control"
+										data-field="fileNm"
+										data-type="text"
+									/>
+									<input
+										type="hidden"
+										data-field="fileNo"
+										data-type="text"
+									/>
+								</div>
+								<div class="col-md-12 d-flex justify-content-start">
+									<button
+										type="button"
+										class="btn btn-danger me-2"
+										name="delFileBtn"
+										onclick="CMN000000_P05.delPdf()"
+									>
+										삭제
+									</button>
+									<button
+										type="button"
+										class="btn btn-secondary me-2"
+										name="dnFileBtn"
+										onclick="CMN000000_P05.dnPdf()"
+									>
+										다운로드
+									</button>
+									<button
+										type="button"
+										class="btn btn-secondary me-2"
+										onclick="document.querySelector(`#CMN000000_P05 [name='pdf-file']`).click()"
+									>
+										PC업로드
+									</button>
+									<input
+										type="file"
+										name="pdf-file"
+										style="display: none;"
+										accept=".pdf"
+										onchange="CMN000000_P05.upPdf()"
+									/>
+									<button type="button" class="btn btn-secondary" onclick="CMN000000_P05.CMN_P02_open()">약관항목파일 선택</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label">약관항목파일 변경일<span class="text-danger ms-1">*</span></label>
+						<input
+							type="text"
+							class="form-control"
+							data-field="prdtChgYmd"
+							data-type="date"
+							onkeyup="CMMN.onlyDateFormat(this)"
+						/>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label">상품명(약식)</label>
+						<input type="text" class="form-control" data-field="sprdtNm" data-type="text" maxlength="66">
+					</div>
+					<div class="col-md-6">
+						<label class="form-label">보종코드</label>
+						<input type="text" class="form-control" data-field="inskndCd" data-type="text" maxlength="10" onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9]/g, ''); this.value = this.value.toUpperCase();">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label">메모</label>
+						<textarea class="form-control" maxlength="250" rows="2" data-field="prdtText" data-type="text"></textarea>
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label">파일 변경이력</label>
+						<div class="datatable-wrapper">
+							<div
+								class="datatable-container ag-theme-alpine"
+								data-field="prdInfoChgLst"
+								data-type="grid"
+								style="height: 200px;"
+							>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-danger me-2"
+					name="cancel"
+					onclick="CMN000000_P05.close()"
+					style="min-width: 80px;"
+				>
+					닫기
+				</button>
+				<button
+					type="button"
+					class="btn btn-primary"
+					name="save"
+					onclick="CMN000000_P05.save()"
+					style="min-width: 80px;"
+				>
+					저장
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

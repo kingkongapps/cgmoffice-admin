@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{sample/layouts/SampleDefaultLayout}"
+>
+<th:block layout:fragment="content">
+<h3>동영상 샘플페이지</h3>
+<hr style="border: double;"/>
+<div>
+	<div>
+		동영상파일 선택 : <input type="file" id="videoFile" accept="video/mp4"/>
+	</div>
+	<div>
+		<video id="videoPreview" controls style="max-width: 600px; display: none;">
+            <source src="#" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+	</div>
+	<div>
+		동영상 썸네일이미지 선택 : <input type="file" id="thumnailImg" accept="image/*" /><br/>
+	</div>
+	<div>
+		<img id="imagePreview" style="width: 400px;" />
+	</div>
+	<div>
+		<button style="margin-top: 10px;" onclick="videoUp()">동영상 업로드</button>
+	</div>
+	<div style="margin-top: 10px;">
+		업로드된 동영상파일의 storFileNm: <span id="storFileNm"></span>
+	</div>
+</div>
+<hr style="border: double;"/>
+<div id="videoPlayerDiv">
+	재생할 동영상파일 storFileNm : <input type="text" id="storFileNm02" value=""/><br/>
+	<button style="margin-top: 10px;" onclick="playVideo()">동영상 가져오기</button>
+	<hr/>
+	<div>
+		<video id="videoPlayer" controls style="width: 600px; height: auto;display: none;">
+		</video>
+	</div>
+</div>
+
+<script th:inline="javascript">
+
+	window.addEventListener('load', () => {
+		setPreviewVideo();
+		setPreviewThumbnail();
+	})
+
+	// 동영상파일 선택시 미리보기 설정
+	const setPreviewVideo = () => {
+		const videoFile = document.getElementById("videoFile");
+		const videoPreview = document.getElementById("videoPreview");
+
+		videoFile.addEventListener("change", (event) => {
+		    const file = event.target.files[0];
+
+		    if (file) {
+		        // 파일 타입 검사
+		        if (!file.type.startsWith("video/")) {
+		            alert("올바른 동영상파일을 선택해 주세요.");
+		            videoPreview.style.display = "none"; // 비디오 미리보기 숨김
+		            return;
+		        }
+		        const url = URL.createObjectURL(file);
+		        videoPreview.src = url;
+		        videoPreview.style.display = "block"; // 비디오 태그 표시
+		    }
+		});
+	}
+
+	// 동영상 썸네일이미지 선택시 미리보기 설정
+	const setPreviewThumbnail = () => {
+		document.getElementById("thumnailImg").addEventListener("change", (event) => {
+		    const file = event.target.files[0]; // 선택된 파일
+		    if (file) {
+		        const reader = new FileReader();
+
+		        // 파일 로드 완료 시 실행되는 이벤트
+		        reader.onload = (e) => {
+					const imagePreview = document.getElementById("imagePreview");
+		            imagePreview.src = e.target.result; // 이미지 미리보기 설정
+		            imagePreview.style.display = "block"; // 이미지 표시
+		        };
+
+		        // 파일을 읽어 Data URL로 변환
+		        reader.readAsDataURL(file);
+		    }
+		});
+	}
+
+	// 동영상 업로드
+	const videoUp = async () => {
+		const videoFile = document.getElementById('videoFile').files[0];
+		if(!videoFile) {
+			await CMMN.alert("업로드할 동영상파일을 선택해 주세요.");
+			return;
+		}
+		const thumnailImg = document.getElementById('thumnailImg').files[0];
+		if(!thumnailImg) {
+			await CMMN.alert("업로드할 동영상썸네일이미지를 선택해 주세요.");
+			return;
+		}
+
+		const params = { videoFile, thumnailImg };
+		const response = await CMMN.api.post('/api/sample/fileMng/videoUp', { params });
+		console.log(response);
+
+		// 업로드된 이미지의 실제저장 아이디추출
+		document.getElementById('storFileNm').innerText = response.data.storFileNm;
+	}
+
+	// 동영상 재생하기
+	const playVideo = async () => {
+		const storFileNm = document.getElementById('storFileNm02').value;
+		if(!storFileNm) {
+			await CMMN.alert("재생할 동영상의 storFileNm 을 입력해 주세요.");
+			return;
+		}
+
+		const options = {
+			params: { storFileNm },
+			responseType: "blob",
+			headers: {
+				Range: "bytes=0-",  // Range 헤더 설정
+			},
+		}
+
+		const response = await CMMN.api.get('/api/common/video/stream', options);
+
+		const videoBlob = response.data;
+		const videoURL = URL.createObjectURL(videoBlob); // Blob URL 생성
+
+		document.getElementById('videoPlayer').style.display = '';
+		const videoPlayer = document.getElementById('videoPlayer');
+		videoPlayer.src = videoURL;
+		videoPlayer.poster = `/api/common/file/thumbnail?storFileNm=${storFileNm}`; // 동영상 썸네일 보여주기
+	}
+
+
+</script>
+
+</th:block>
+</html>

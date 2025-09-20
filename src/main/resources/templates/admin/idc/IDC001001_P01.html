@@ -1,0 +1,95 @@
+<div id="IDC001001_P01" class="modal fade">
+	<script src="/static/admin/idc/IDC001001_P01.js"></script>
+
+	<div
+		class="modal-dialog modal-dialog-centered modal-lg"
+		tabindex="-1"
+	>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">
+					<span name="title">약관번호생성조합내역 상세</span>
+					<span name="pageCd" style="color: var(--bs-modal-header-bg);"></span>
+				</h1>
+				<button type="button" class="btn-close" onclick="IDC001001_P01.close()"></button>
+			</div>
+			<div class="modal-body p-4" style="max-height: 500px; overflow-y: auto;">
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label">약관번호생성ID</label>
+						<input
+							type="text"
+							class="form-control"
+							disabled
+							data-field="indvClusMxtrId"
+							name="indvClusMxtrId"
+						/>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label">증권번호</label>
+						<input
+							type="text"
+							class="form-control"
+							disabled
+							data-field="apcno"
+							name="apcno"
+						/>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-8">
+						<label class="form-label">약관번호</label>
+						<div class="d-flex align-items-center">
+							<input
+								type="text"
+								class="form-control"
+								disabled
+								data-field="mxtrClusCd"
+								name="mxtrClusCd"
+								style="min-width: 77px;"
+							/>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<label class="form-label">생성일자</label>
+						<div class="d-flex align-items-center">
+							<input
+								type="text"
+								class="form-control"
+								disabled
+								data-field="crtDtm"
+								name="crtDtm"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label">개별약관생성매핑내역</label>
+						<div class="datatable-wrapper">
+							<div
+								class="datatable-container ag-theme-alpine"
+								data-field="indvClusCrtMppgLst"
+								data-type="grid"
+								style="height: 200px;"
+							>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button"class="btn btn-primary" style="width: 100px; height:38px;" onclick="IDC001001_P01.close()">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+.cell-span {
+	background-color: #00e5ff !important;
+}
+</style>

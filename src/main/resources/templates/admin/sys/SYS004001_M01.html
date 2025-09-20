@@ -1,0 +1,226 @@
+<div id="SYS004001_M01">
+	<script src="/static/admin/sys/SYS004001_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-4" >
+	    <div class="card-body">
+	        <div class="datatable-wrapper">
+				<div class="row" name="menuCd_01">
+					<div class="col-md-3 my-2">
+						<select data-auth="S" class="datatable-selector" style="width: 100%;" name="searchClcd">
+							<option value="1">
+								메뉴레벨
+							</option>
+							<option value="2">
+								메뉴명
+							</option>
+							<option value="3">
+								메뉴코드
+							</option>
+						</select>
+					</div>
+					<div class="col-md-7 my-2">
+						<input type="text"
+							class="form-control"
+							style="width: 100%;"
+							name="searchData"
+							placeholder="검색어를 입력해주세요"
+							onkeyup="if(event.key === 'Enter'){SYS004001_M01.search_01()} else { if(document.querySelector(`#SYS004001_M01 [name='searchClcd']`).value == '1'){this.value = this.value.replace(/[^0-9]/g, '')}}"
+							data-auth="S"
+							maxlength="100"
+						>
+					</div>
+					<div class="col-md-2 my-2 d-flex align-items-end">
+						<button data-auth="S" class="btn btn-primary me-1" style="width: 80px; height:38px;" onclick="SYS004001_M01.search_01()">검색</button>
+					</div>
+
+				</div>
+
+				<!--총건수-->
+				<h6 name="SYS004001_M01_totalCount" class="mt-3"></h6>
+
+				<!--메인그리드-->
+				<div
+					class="datatable-container ag-theme-alpine"
+					name="table-content_01"
+					style="height: 480px;"
+				>
+				</div>
+
+				<div class="mt-3 d-flex">
+					<button
+						type="button"
+						class="btn btn-success ms-auto"
+						name="new"
+						onclick="SYS004001_M01.insert()"
+						style="min-width: 80px;"
+						data-auth="I"
+					>
+						신규등록
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div name="menuCd_02" style="display: none;">
+		<h4>메뉴관리 상세 정보</h4>
+		<div class="card mb-4">
+		  <div class="row">
+		    <!-- 좌측: 그리드 -->
+		    <div class="col-md-4">
+		      <div class="datatable-container ag-theme-alpine" name="table-content_02" style="height: 770px;"></div>
+		    </div>
+
+		    <!-- 우측: 상세정보 -->
+		    <div class="col-md-8">
+		      <div class="card"  style="height: 770px;">
+		        <div class="card-header">
+		          상세정보
+		          <button
+		            type="button"
+		            class="btn btn-secondary btn-sm float-end"
+		            onclick="SYS004001_M01.insert()"
+					data-auth="I"
+		          >
+		            초기화
+		          </button>
+		        </div>
+				<div class="card-body">
+					<div class="row mb-3">
+						<div class="col-md-6">
+							<label class="form-label" style="min-width: 100px;">메뉴코드<span class="text-danger ms-1">*</span></label>
+							<div style="display: flex; flex-direction: row">
+								<input type="text" maxlength="50" class="form-control" data-field="menuCd" name="menuCd" data-type="text" style="min-width: 20px; width: 100%;" disabled="false" onblur="SYS004001_M01.change()" >
+								<input type="text" maxlength="50" class="form-control" data-field="menuCd" name="menuCdHidden" data-type="text" style="display: none;" >
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-12">
+							<label class="form-label mb-2" style="min-width: 100px;">상위메뉴</label>
+							<div class="d-flex align-items-center gap-2">
+							    <input type="text" maxlength="10" class="form-control" name="upprMenuCd" data-field="upprMenuCd" data-type="text" style="flex-grow: 1; min-width: 0;" placeholder="상위메뉴코드" onkeyup="if(event.key === 'Enter') SYS004001_M01.P01_open('cd')">
+							    <input type="text" maxlength="10" class="form-control" name="upprMenuNm" data-field="upprMenuNm" data-type="text" style="flex-grow: 1; min-width: 0;" placeholder="상위메뉴명" onkeyup="if(event.key === 'Enter') SYS004001_M01.P01_open('nm')">
+							    <button class="btn btn-secondary" name="upprMenuCdChk" style="min-width: 90px;" onclick="SYS004001_M01.P01_open()"> 메뉴선택 </button>
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-6">
+							<label class="form-label">메뉴명<span class="text-danger ms-1">*</span></label>
+							<input type="text" maxlength="33" class="form-control" name="menuNm" data-field="menuNm" data-type="text">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-6">
+							<label class="form-label" style="min-width: 100px;">메뉴유형<span class="text-danger ms-1">*</span></label>
+							<div style="display: flex; flex-direction: row">
+								<select class="datatable-selector" style="width: 100%;" name="menuTypCd" data-field="menuTypCd">
+									<option value="M">
+										메뉴
+									</option>
+									<option value="F">
+										폴더
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label" style="min-width: 100px;">메뉴레벨<span class="text-danger ms-1">*</span></label>
+							<div style="display: flex; flex-direction: row">
+								<select class="datatable-selector" style="width: 100%;" name="menuLev" data-field="menuLev">
+									<option value="1">
+										1레벨
+									</option>
+									<option value="2">
+										2레벨
+									</option>
+									<option value="3">
+										3레벨
+									</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-6">
+							<label class="form-label" style="min-width: 100px;">프로그램ID</label>
+							<div style="display: flex; flex-direction: row">
+								<input type="text" maxlength="33" class="form-control" data-field="pgid" name="pgid" data-type="text" style="min-width: 20px; width: 100%;">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label" style="min-width: 100px;">메뉴순서<span class="text-danger ms-1">*</span></label>
+							<div style="display: flex; flex-direction: row">
+								<input type="number" maxlength="5" class="form-control" data-field="sortNo" name="sortNo" data-type="text" style="min-width: 20px; width: 100%;">
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-6">
+							<label class="form-label" style="min-width: 100px;">표시여부<span class="text-danger ms-1">*</span></label>
+							<div style="display: flex; flex-direction: row">
+								<select class="datatable-selector" style="width: 100%;" name="menuDispYn" data-field="menuDispYn">
+									<option value="Y">
+										사용
+									</option>
+									<option value="N">
+										미사용
+									</option>
+
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-12">
+							<label class="form-label" style="min-width: 100px;">메뉴설명</label>
+							<textarea class="form-control" maxlength="50" rows="3" name="menuDtext" data-field="menuDtext" data-type="text">
+							</textarea>
+						</div>
+					</div>
+					<div class="d-flex justify-content-end">
+						<button
+							type="button"
+							class="btn btn-primary me-2"
+							name="save"
+							onclick="SYS004001_M01.save()"
+							style="min-width: 80px;"
+							data-auth="I"
+						>
+							저장
+						</button>
+						<button
+							type="button"
+							class="btn btn-danger me-1"
+							name="delete"
+							onclick="SYS004001_M01.delete()"
+							style="min-width: 80px;"
+							data-auth="D"
+						>
+							삭제
+						</button>
+					</div>
+				</div>
+		      </div>
+		    </div>
+		  </div>
+	</div>
+	</div>
+
+</div>
+
+
+
+

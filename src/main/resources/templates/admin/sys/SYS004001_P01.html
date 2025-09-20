@@ -1,0 +1,87 @@
+<div id="SYS004001_P01" class="modal fade">
+	<script src="/static/admin/sys/SYS004001_P01.js"></script>
+
+	<div
+			class="modal-dialog modal-dialog-centered modal-xl"
+			tabindex="-1"
+		>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">
+					<span name="title">메뉴선택</span>
+					<span name="pageCd" style="color: var(--bs-modal-header-bg);"></span>
+				</h1>
+				<button type="button" class="btn-close" onclick="SYS004001_P01.close()"></button>
+			</div>
+		    <div class="modal-body p-4" style="overflow-y: auto;">
+		        <div class="datatable-wrapper">
+					<div class="row" name="menuCdPop_01">
+						<div class="col-md-3 my-2">
+							<select class="datatable-selector" style="width: 100%;" name="searchClcd">
+								<option value="1">
+									레벨
+								</option>
+								<option value="2">
+									메뉴명
+								</option>
+								<option value="3">
+									메뉴코드
+								</option>
+							</select>
+						</div>
+						<div class="col-md-7 my-2">
+							<input type="text"
+								class="form-control"
+								style="width: 100%;"
+								name="searchData"
+								placeholder="검색어를 입력해주세요"
+								onkeyup="if(event.key === 'Enter') SYS004001_P01.search()"
+							>
+						</div>
+						<div class="col-md-2 my-2 d-flex justify-content-end">
+							<button class="btn btn-primary me-1" style="width: 80px;" onclick="SYS004001_P01.search()">검색</button>
+						</div>
+					</div>
+
+					<!--총건수-->
+					<h6 name="SYS004001_P01_totalCount"></h6>
+
+					<div
+						class="datatable-container ag-theme-alpine"
+						name="table-content"
+						style="height: 350px;"
+					>
+					</div>
+
+				</div>
+			</div>
+
+
+
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-primary"
+					name="save"
+					onclick="SYS004001_P01.check()"
+					style="min-width: 80px;"
+				>
+					확인
+				</button>
+				<button
+					type="button"
+					class="btn btn-danger me-2"
+					name="cancel"
+					onclick="SYS004001_P01.close()"
+					style="min-width: 80px;"
+				>
+					취소
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+

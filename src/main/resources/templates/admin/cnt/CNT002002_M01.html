@@ -1,0 +1,72 @@
+<div id="CNT002002_M01">
+	<script src="/static/admin/cnt/CNT002002_M01.js"></script>
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-2">
+		<div class="card-header">
+			검색조건
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-3 my-2">
+					<select class="datatable-selector" style="width: 100%;" name="searchCmpnyCode" onchange="CNT002002_M01.pageToFirst_01()">
+					</select>
+				</div>
+				<div class="col-md-7 my-2">
+					<input type="text"
+						class="form-control"
+						style="width: 100%; background-color: #e9ecef;"
+						name="searchPrdtNm"
+						placeholder="검색할 주계약 상품명"
+						onclick="CNT002002_M01.CMN_P04_open()"
+						readonly
+						data-auth="S"
+					>
+				</div>
+				<div class="col-md-2 my-2 d-flex align-items-end" style="display: flex;justify-content:flex-end;">
+					<button
+						class="btn btn-primary me-1"
+						style="width: 80px; height:38px;"
+						onclick="CNT002002_M01.pageToFirst_01()"
+						data-auth="S"
+					>
+						검색
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card mb-4">
+		<div class="card-body" name="cond_01">
+			<div class="datatable-wrapper">
+				<div
+					class="datatable-container ag-theme-alpine"
+					name="table-content-01"
+					style="height: 486px;"
+				>
+				</div>
+
+				<div
+					class="datatable-bottom position-relative mt-3"
+				>
+					<nav class="datatable-pagination">
+						<ul
+							class="datatable-pagination-list d-flex align-items-center mb-0"
+							name="paginator_01"
+						>
+						</ul>
+					</nav>
+					<div id="CNT002002_M01_totalCount"></div>
+				</div>
+			</div>
+		</div>
+	</div>

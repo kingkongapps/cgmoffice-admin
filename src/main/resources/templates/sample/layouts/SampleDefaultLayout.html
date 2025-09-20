@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html
+  lagn="ko"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<script src="/static/lib/axios/1.8.4/axios.min.js"></script>
+	<script src="/static/lib/jquery/3.4.1/jquery.min.js"></script>
+	<script th:src="${'/static/js/commonLib.js?rscVer=' + session.properties.rscVer}"></script>
+<body>
+	<div>
+		<h2>샘플페이지 목록</h2>
+		<ul>
+			<li>
+				<a href="/sample/sampleSignup">회원가입 샘플페이지</a>
+			</li>
+			<li>
+				<a href="/sample/sampleLogin">로그인 샘플페이지</a>
+			</li>
+			<li>
+				<a href="/sample/samplePaging">페이징 샘플페이지</a>
+			</li>
+			<li>
+				<a href="/sample/sampleExcelMng">엑셀관리 샘플페이지</a>
+			</li>
+			<li>
+				<a href="/sample/sampleFileMng">파일관리 샘플페이지</a>
+			</li>
+			<li>
+				<a href="/sample/sampleImgMng">이미지관리 샘플페이지</a>
+			</li>
+			<li>
+				<a href="/sample/samplePdfMng">PDF관리 샘플페이지</a>
+			</li>
+<!--			<li>-->
+<!--				<a href="/sample/sampleVideo">동영상 샘플페이지</a>-->
+<!--			</li>-->
+<!--			<li>-->
+<!--				<a href="/sample/sampleAudio">Audio 샘플페이지</a>-->
+<!--			</li>-->
+<!--			<li>-->
+<!--				<a href="/sample/sampleHttpCall">Springboot WebClient HTTP 호출 샘플페이지</a>-->
+<!--			</li>-->
+<!--			<li>-->
+<!--				<a href="/sample/sampleQr">QR 샘플페이지</a>-->
+<!--			</li>-->
+<!--			<li>-->
+<!--				<a href="/sample/sampleJsCommon">javascript 공통 샘플페이지</a>-->
+<!--			</li>-->
+		</ul>
+	</div>
+	<hr style="border-top-width: thick;"></hr>
+	<th:block layout:fragment="content"></th:block>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript example</title>
+		<meta charSet="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<style media="only screen">
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            html {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                overflow: auto;
+            }
+
+            body {
+                padding: 1rem;
+                overflow: auto;
+            }
+        </style>
+		<link rel="stylesheet" href="styles.css"/>
+	</head>
+	<body>
+		<div class="example-wrapper">
+			<div style="margin-bottom: 5px; display: flex; justify-content: space-between">
+				<div>
+					<button onclick="onBtStartEditing(undefined)">edit (0)</button>
+					<button onclick="onBtStartEditing(&#x27;Backspace&#x27;)">
+        edit (0, Backspace)
+      </button>
+					<button onclick="onBtStartEditing(undefined, &#x27;T&#x27;)">edit (0, 'T')</button>
+					<button onclick="onBtStartEditing(undefined, undefined, &#x27;top&#x27;)">
+        edit (0, Top)
+      </button>
+					<button onclick="onBtStartEditing(undefined, undefined, &#x27;bottom&#x27;)">
+        edit (0, Bottom)
+      </button>
+				</div>
+				<div>
+					<button onclick="onBtStopEditing()">stop ()</button>
+					<button onclick="onBtNextCell()">next ()</button>
+					<button onclick="onBtPreviousCell()">previous ()</button>
+				</div>
+				<div>
+					<button onclick="onBtWhich()">which ()</button>
+				</div>
+			</div>
+			<div class="grid-wrapper">
+				<div id="myGrid" class="ag-theme-alpine">
+				</div>
+			</div>
+		</div>
+		<script>var __basePath = './';</script>
+		<script src="../../../ag-grid-community.min.js">
+		</script>
+		<script src="data.js">
+		</script>
+		<script src="main.js">
+		</script>
+	</body>
+	<link rel="stylesheet" href="styles.css"/>
+</html>

@@ -1,0 +1,59 @@
+<div id="SYS004003_P01" class="modal fade">
+	<script src="/static/admin/sys/SYS004003_P01.js"></script>
+
+	<div
+		class="modal-dialog modal-dialog-centered modal-xl"
+		tabindex="-1"
+	>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">
+					<span name="title">시스템에러이력상세조회</span>
+					<span name="pageCd" style="color: var(--bs-modal-header-bg);"></span>
+				</h1>
+				<button type="button" class="btn-close" onclick="SYS004003_P01.close()"></button>
+			</div>
+			<div class="modal-body p-4" style="overflow-y: auto;">
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label" style="min-width: 100px;">에러코드</label>
+						<input type="text" class="form-control" data-field="errLogid" name="errLogid" data-type="text" style="min-width: 20px; width: 100%;" readonly>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label">에러 상세</label>
+						<textarea class="form-control" rows="10" data-field="errDtl" data-type="text" readonly>
+						</textarea>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-primary me-2"
+					name="cancel"
+					onclick="SYS004003_P01.close()"
+					style="min-width: 80px;"
+				>
+					확인
+				</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

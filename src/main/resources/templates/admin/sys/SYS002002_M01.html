@@ -1,0 +1,188 @@
+<div id="SYS002002_M01">
+	<script src="/static/admin/sys/SYS002002_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-5" style="width: 44.66666667%;">
+			<div class="card p-2 mb-2">
+				<div class="card mb-3">
+					<div class="card-header ps-3">
+						권한없는 메뉴
+					</div>
+				    <div class="card-body pb-0">
+
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<select
+									data-auth="S"
+									class="datatable-selector"
+									name="search2LvMenu"
+									style="width: 100%;"
+									onchange="SYS002002_M01.search_01('MENU')"
+								>
+								</select>
+							</div>
+							<div class="col-md-6 mb-3">
+								<select
+									data-auth="S"
+									class="datatable-selector"
+									name="search3LvMenu"
+									style="width: 100%;"
+									onchange="SYS002002_M01.search_01('3LV')"
+								>
+								</select>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="card-body pt-0 m-0">
+					<div class="tatable-wrapper">
+						<div
+							class="datatable-container ag-theme-alpine"
+							name="table-content-01"
+							style="height: 360px;"
+						>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1 d-flex justify-content-center align-items-center" style="min-height: 100%; width: 4.33333333%;">
+			<div>
+				<div class="row my-3">
+					<button
+						data-auth="I"
+						class="btn btn-outline-secondary d-flex justify-content-center align-items-center btn_rud_line"
+						style="height: 50px; width: 60px; padding: 0;"
+						onclick="SYS002002_M01.moveToRight()"
+					>
+						<i class="bi bi-caret-right-fill" style="font-size: 30px;"></i>
+					</button>
+				</div>
+				<div class="row my-3">
+					<button
+						data-auth="I"
+						class="btn btn-outline-secondary d-flex justify-content-center align-items-center btn_rud_line"
+						style="height: 50px; width: 60px; padding: 0;"
+						onclick="SYS002002_M01.moveToLeft()"
+					>
+						<i class="bi bi-caret-left-fill" style="font-size: 30px;"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6" style="width: 51%;">
+			<div class="card p-2 mb-2">
+				<div class="card mb-3">
+					<div class="card-header ps-3">
+						권한있는 메뉴
+					</div>
+				    <div class="card-body pb-0">
+
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<select
+									data-auth="S"
+									class="datatable-selector"
+									name="searchGrpAuth"
+									style="width: 100%;"
+									onchange="SYS002002_M01.search_01('AUTH')"
+								>
+								</select>
+							</div>
+							<div class="col-md-6 mb-3">
+								<select
+									data-auth="S"
+									class="datatable-selector"
+									name="searchAuth"
+									style="width: 100%;"
+									onchange="SYS002002_M01.search_01()"
+								>
+								</select>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="card-body pt-0 m-0">
+					<div class="datatable-wrapper">
+						<div
+							class="datatable-container ag-theme-alpine"
+							name="table-content-02"
+							style="height: 360px;"
+						>
+						</div>
+
+
+
+							<div class="row mt-2">
+
+								<div class="col-md-5 ">
+									<label class="form-label" style="width: 100%;">권한그룹<span class="text-danger ms-1">*</span></label>
+									<select
+										class="datatable-selector"
+										name="selectedAuthGrp"
+										style="width: 100%;"
+										onchange="SYS002002_M01.searchNewAuthCd(this.value)"
+									>
+									</select>
+								</div>
+
+								<div class="col-md-2">
+									<label class="form-label" style="width: 100%;">권한코드<span class="text-danger ms-1">*</span></label>
+									<input type="text"
+										class="form-control"
+										maxlength="3"
+										name="selectedAuthCd"
+										style="width: 100%;"
+										disabled
+									>
+								</div>
+
+								<div class="col-md-5">
+									<label class="form-label" style="width: 100%;" >권한명<span class="text-danger ms-1">*</span></label>
+									<input type="text"
+										class="form-control"
+										maxlength="15"
+										name="selectedAuthNm"
+										style="width: 100%;"
+									>
+								</div>
+
+
+
+							</div>
+
+							<div class="mt-4 d-flex justify-content-end">
+								<button data-auth="I" class="btn btn-success me-2" style="width: 100px;" onclick="SYS002002_M01.new()">
+									신규
+								</button>
+								<button data-auth="I" class="btn btn-primary" style="width: 100px;" onclick="SYS002002_M01.save()">
+									저장
+								</button>
+							</div>
+
+
+
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>

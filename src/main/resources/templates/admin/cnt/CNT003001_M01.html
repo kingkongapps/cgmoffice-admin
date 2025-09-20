@@ -1,0 +1,121 @@
+<div id="CNT003001_M01">
+	<script src="/static/admin/cnt/CNT003001_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+
+	<div class="card mb-2">
+		<div class="card-header">
+			주계약 상품검색
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-3 my-2">
+					<input
+						class="form-control"
+						style="width: 100%;background-color: #e9ecef;"
+						placeholder="보험사"
+						name="cmpnyNm"
+						readonly
+						onclick="CNT003001_M01.CMN_P04_open()"
+						data-auth="S"
+					/>
+				</div>
+				<div class="col-md-7 my-2">
+					<input
+						class="form-control"
+						style="width: 100%;background-color: #e9ecef;"
+						placeholder="주계약 상품명"
+						name="clusItmNm"
+						readonly
+						onclick="CNT003001_M01.CMN_P04_open()"
+						data-auth="S"
+					/>
+				</div>
+				<div class="col-md-2 my-2 d-flex align-items-end">
+					<button
+						class="btn btn-primary me-1"
+						style="width: 80px; height:38px;"
+						onclick="CNT003001_M01.CMN_P04_open()"
+						data-auth="S"
+					>
+						검색
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="card mb-4">
+		<div class="card-body">
+			<div class="datatable-wrapper">
+				<!--총건수-->
+				<h6 name="CNT003001_M01_totalCount" class="mt-3"></h6>
+				<div
+					class="datatable-container ag-theme-alpine"
+					name="table-content"
+					style="height: 400px;"
+				>
+				</div>
+				<div class="mt-3 justify-content-between align-items-center" name="searchResultShow" style="display: none !important;">
+					<div class="d-flex align-items-center">
+						<span
+							style="min-width: 100px;"
+						>
+							약관번호
+						</span>
+						<input
+							class="form-control"
+							style="min-width: 300px;"
+							name="mxtrClusCd"
+							readonly
+							value=""
+						>
+						</input>
+						<span
+							class="ms-4"
+							style="min-width: 70px;"
+						>
+							계약일자
+						</span>
+						<input
+							class="form-control"
+							style="width: 120px;"
+							readonly
+							name="contYmd"
+						>
+						</input>
+					</div>
+					<div
+						class="datatable-search"
+						style="display: flex;justify-content:flex-end;"
+					>
+						<button
+							class="btn btn-secondary me-1"
+							onclick="CNT003001_M01.procIndvClusCrtmx()"
+							data-auth="S"
+						>
+							미리보기
+						</button>
+						<button
+							class="btn btn-secondary ms-1"
+							onclick="CNT003001_M01.splitDn()"
+							data-auth="S"
+						>
+							묶음다운로드
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</div>

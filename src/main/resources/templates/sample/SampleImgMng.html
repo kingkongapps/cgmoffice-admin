@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{sample/layouts/SampleDefaultLayout}"
+>
+<th:block layout:fragment="content">
+<h3>이미지관리 샘플페이지</h3>
+<hr style="border: double;"/>
+<div>
+	이미지파일 선택 : <input type="file" id="imgFile" accept="image/*" /><br/>
+	<div>
+		<img id="imagePreview" style="width: 450px;" />
+	</div>
+	<button style="margin-top: 10px;" onclick="imgUp()">이미지 업로드</button>
+	<div style="margin-top: 10px;">
+		업로드된 이미지의 fileNo: <input type="text" id="fileNo"></input>
+	</div>
+	<hr/>
+	<button style="margin-top: 10px;" onclick="showImg()">이미지 가져오기</button>
+	<hr/>
+	썸네일:<br/>
+	<img id="thumbnailimg"/>
+	<hr/>
+	링크로 보여주기:<br/>
+	<img id="lingimg" style="width: 500px;"/>
+	<hr/>
+	base64로 보여주기:<br/>
+	<img id="base64img" style="width: 500px;"/>
+</div>
+
+<script th:inline="javascript">
+
+	window.addEventListener('load', () => {
+		setPreview();
+	});
+
+	// 이미지파일 선택시 미리보기 설정
+	function setPreview() {
+		document.getElementById("imgFile").addEventListener("change", (event) => {
+		    const file = event.target.files[0]; // 선택된 파일
+		    if (file) {
+		        const reader = new FileReader();
+
+		        // 파일 로드 완료 시 실행되는 이벤트
+		        reader.onload = (e) => {
+					const imagePreview = document.getElementById("imagePreview");
+		            imagePreview.src = e.target.result; // 이미지 미리보기 설정
+		            imagePreview.style.display = "block"; // 이미지 표시
+		        };
+
+		        // 파일을 읽어 Data URL로 변환
+		        reader.readAsDataURL(file);
+		    }
+		});
+	}
+
+	// 이미지 업로드
+	async function imgUp() {
+		const imgFile = document.getElementById('imgFile').files[0];
+		if(!imgFile) {
+			await CMMN.alert("업로드할 이미지파일을 선택해 주세요.");
+			return;
+		}
+
+		const params = { imgFile };
+		const response = await CMMN.api.post('/api/sample/imgMng/imgUp', { params });
+		console.log(response);
+
+		// 업로드된 이미지의 실제저장 아이디추출
+		document.getElementById('fileNo').value = response.data.fileNo;
+	}
+
+	// DB에 이미지파일의 메타정보가 저장된 이미지 보여주기
+	async function showImg() {
+		const fileNo = document.getElementById('fileNo').value;
+		if(!fileNo) {
+			await CMMN.alert("보여줄 이미지의 fileNo 을 입력해 주세요.");
+			return;
+		}
+
+		let response;
+
+		// 썸네일 보여주기
+		response = await CMMN.api.get(`/api/common/file/info?fileNo=${fileNo}`);
+		document.getElementById('thumbnailimg').src = `data:image/${response.data.fileExt};base64,${response.data.rm}`;
+
+		// 링크로 보여주기 img 태그의 src 속성셋팅
+		document.getElementById('lingimg').src = `/api/common/img/show?fileNo=${fileNo}`;
+
+		// base64 데이터로 img 보여주기
+		response = await CMMN.api.get(`/api/common/img/base64?fileNo=${fileNo}`);
+		document.getElementById('base64img').src = `data:image/${response.data.fileExt};base64,${response.data.base64Data}`;
+	}
+
+</script>
+</th:block>
+</html>

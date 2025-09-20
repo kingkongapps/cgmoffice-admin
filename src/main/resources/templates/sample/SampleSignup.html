@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{sample/layouts/SampleDefaultLayout}"
+>
+<th:block layout:fragment="content">
+	
+<h3>회원가입 샘플페이지</h3>
+<hr style="border: double;"/>
+<div>
+	아이디: <input type="text" id="memId" />
+</div>
+<div>
+	비밀번호: <input type="password" id="passwd" />
+</div>
+<div>
+	이름: <input type="text" id="memNm" />
+</div>
+<br/>
+<div>
+	<button onclick="signup()">회원가입</button>
+</div>
+<script>
+
+	async function signup() {
+		const memId = document.getElementById('memId').value;
+		const passwd = document.getElementById('passwd').value;
+		const memNm = document.getElementById('memNm').value;
+		if(!memId) {
+			await CMMN.alert('아이디를 입력해주세요.');
+			return;
+		}
+		if(!passwd) {
+			await CMMN.alert('비밀번호를 입력해주세요.');
+			return;
+		}
+		if(!memNm) {
+			await CMMN.alert('이름을 입력해주세요.');
+			return;
+		}
+
+		const params = { memId, passwd, memNm };
+
+		const response = await CMMN.api.post('/api/common/user/signup', { params });
+
+		console.log('>>> signup response : ', response);
+
+		await CMMN.alert('회원가입 성공');
+	}
+	
+</script>
+
+</th:block>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{sample/layouts/SampleDefaultLayout}"
+>
+<th:block layout:fragment="content">
+<h3>Audio 샘플페이지</h3>
+<hr style="border: double;"/>
+<div>
+	<div>
+		오디오파일 선택: <input type="file" id="audioFile" accept="audio/mp3"/>
+	</div>
+	<div>
+		<audio id="audioPreview" controls style="display: none;"></audio>
+	</div>
+	<div>
+		오디오 썸네일이미지 선택 : <input type="file" id="thumnailImg" accept="image/*" /><br/>
+	</div>
+	<div>
+		<img id="imagePreview" style="width: 150px;" />
+	</div>
+	<div>
+		<button style="margin-top: 10px;" onclick="audioUp()">오디오파일 업로드</button>
+	</div>
+	<div style="margin-top: 10px;">
+		업로드된 오디오파일의 storFileNm: <span id="storFileNm"></span>
+	</div>
+</div>
+<hr style="border: double;"/>
+<div>
+	재생할 오디오파일 storFileNm : <input type="text" id="storFileNm02" value=""/><br/>
+	<button style="margin-top: 10px;" onclick="playAudio()">오디오 가져오기</button>
+	<hr/>
+	<div id="audioPlayerDiv" style="display: none;">
+		<!-- 썸네일 이미지 -->
+		<img id="thumbnail" style="width: 150px;">
+		<audio id="audioPlayer" controls></audio>
+	</div>
+</div>
+<script th:inline="javascript">
+
+	window.addEventListener('load', () => {
+		setPreviewAudio();
+		setPreviewThumbnail();
+	})
+
+	// 오디오파일 선택시 미리보기 설정
+	const setPreviewAudio = () => {
+		const audioFile = document.getElementById('audioFile');
+		const audioPreview = document.getElementById('audioPreview');
+
+		audioFile.addEventListener('change', function(event) {
+		    const file = event.target.files[0];
+		    if (file) {
+		        const fileURL = URL.createObjectURL(file);
+		        audioPreview.src = fileURL;
+		        audioPreview.style.display = 'block';
+		    } else {
+		        // 파일이 없으면 오디오 요소 숨김
+		        audioPreview.style.display = 'none';
+		        audioPreview.src = '';
+		    }
+		});
+	}
+
+	// 오디오 썸네일이미지 선택시 미리보기 설정
+	const setPreviewThumbnail = () => {
+		document.getElementById("thumnailImg").addEventListener("change", (event) => {
+		    const file = event.target.files[0]; // 선택된 파일
+		    if (file) {
+		        const reader = new FileReader();
+
+		        // 파일 로드 완료 시 실행되는 이벤트
+		        reader.onload = (e) => {
+					const imagePreview = document.getElementById("imagePreview");
+		            imagePreview.src = e.target.result; // 이미지 미리보기 설정
+		            imagePreview.style.display = "block"; // 이미지 표시
+		        };
+
+		        // 파일을 읽어 Data URL로 변환
+		        reader.readAsDataURL(file);
+		    }
+		});
+	}
+
+	// 오디오파일 업로드
+	const audioUp = async () => {
+		const audioFile = document.getElementById('audioFile').files[0];
+		if(!audioFile) {
+			await CMMN.alert("업로드할 오디오파일을 선택해 주세요.");
+			return;
+		}
+		const thumnailImg = document.getElementById('thumnailImg').files[0];
+		if(!thumnailImg) {
+			await CMMN.alert("업로드할 오디오 썸네일이미지를 선택해 주세요.");
+			return;
+		}
+
+		const params = { audioFile, thumnailImg };
+		const response = await CMMN.api.post('/api/sample/audio/audioUp', { params });
+		console.log(response);
+
+		// 업로드된 이미지의 실제저장 아이디추출
+		document.getElementById('storFileNm').innerText = response.data.storFileNm;
+	}
+
+	// 오디오 재생하기
+	const playAudio = async () => {
+		const storFileNm = document.getElementById('storFileNm02').value;
+		if(!storFileNm) {
+			await CMMN.alert("재생할 오디오의 storFileNm 을 입력해 주세요.");
+			return;
+		}
+
+		document.getElementById('audioPlayerDiv').style.display = '';
+
+	    const audioUrl = `/api/common/audio/stream?storFileNm=${storFileNm}`;
+	    document.getElementById("audioPlayer").src = audioUrl;
+		document.getElementById("thumbnail").src = `/api/common/file/thumbnail?storFileNm=${storFileNm}`; // 오디오 썸네일 보여주기
+	}
+</script>
+</th:block>
+</html>

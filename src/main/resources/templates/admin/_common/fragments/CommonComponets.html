@@ -1,0 +1,38 @@
+
+<!-- alert/confirm -->
+<div
+	class="modal fade"
+	id="app_dialog"
+	tabindex="-1"
+	aria-labelledby="exampleModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog modal-sm modal-dialog-centered" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="app_dialog_title">알림</h1>
+				<button type="button" class="btn-close" id="app_dialog_close"></button>
+			</div>
+			<div class="modal-body" id="app_dialog_msg">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger w-80px" id="app_dialog_cancel">취소</button>
+				<button type="button" class="btn btn-primary w-80px" id="app_dialog_confirm_ok">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 로딩바 -->
+<div
+	id="coreloader"
+	class="d-none position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex justify-content-center align-items-center"
+	style="z-index: 1055;"
+>
+	<div class="text-center text-white">
+		<div class="spinner-border text-light" role="status">
+			<span class="visually-hidden">Loading...</span>
+		</div>
+		<div class="mt-2">처리 중입니다...</div>
+	</div>
+</div>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lagn="ko"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+	<th:block th:replace="~{admin/_common/fragments/CommonHead}"></th:block>
+
+	<body class="sb-nav-fixed">
+		<nav
+			class="sb-topnav navbar navbar-expand navbar-dark bg-white"
+		>
+		    <!-- Navbar Brand-->
+		    <a
+				class="navbar-brand ps-3 d-flex align-items-center company_logo_bx me-lg-5"
+				href="javascript:void(0)"
+				onclick="CMMN.goTo(CMMN.mainPageCode)"
+
+			>
+
+				<span
+					class="ms-4"
+					style="font-size:1.2rem; color:#000; font-weight:600; letter-spacing:-1px;"
+				>
+					맞춤약관시스템
+				</span>
+			</a>
+		    <!-- Sidebar Toggle-->
+		    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 all_menu_bg" id="sidebarToggle" href="#!">
+
+			</button>
+		    <div class="d-md-inline-block me-auto">
+		    </div>
+		    <!-- Navbar-->
+		    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+				<li id="top_menu1">
+					<div
+						class="me-1 bg_admin"
+						style="height: 100%; color: white; align-content: center;"
+					>
+
+					</div>
+				</li>
+				<li id="top_menu2">
+					<span
+						class="d-flex align-items-center"
+						style="color:#343434; height: 100%; font-size: 0.9rem;
+						    letter-spacing: -1px;
+						    margin-right: 30px;
+						    font-weight: 600;"
+						id="cmmnUserNm"
+					>
+					</span>
+				</li>
+		        <li id="top_menu3" class="nav-item">
+		            <div
+						class="d-flex align-items-center me-4"
+						style="color:#343434; height: 100%; font-size: 0.9rem;
+							letter-spacing: -1px;
+							margin-right: 30px;
+							font-weight: 600;
+							cursor: pointer;"
+						onclick="CMMN.logout()"
+					>
+						<i class="bg_logout"></i>
+						<span>로그아웃</span>
+					</div>
+		        </li>
+		    </ul>
+		</nav>
+		<div id="layoutSidenav">
+			<div id="layoutSidenav_nav">
+			    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+			        <div class="sb-sidenav-menu" style="padding-bottom: 80px;">
+			            <div class="nav" id="sideMenuDiv">
+			            </div>
+			        </div>
+			    </nav>
+			</div>
+			<div id="layoutSidenav_content">
+			    <main>
+					<div class="container-fluid px-4" id="layoutContent">
+						<th:block layout:fragment="content"></th:block>
+					</div>
+				</main>
+				<footer class="py-4 bg-light mt-auto footer_bx">
+				    <div class="container-fluid px-4">
+				        <div class="d-flex align-items-center justify-content-end small">
+				            <div class="text-muted"> &copy; 2025 진솔아이엔에스. All Rights Reserved.</div>
+				        </div>
+				    </div>
+				</footer>
+			</div>
+		</div>
+		<div id="layoutInclude">
+		</div>
+		<div id="layoutIncludeCmn">
+		</div>
+		<th:block th:replace="~{admin/_common/fragments/CommonComponets}"></th:block>
+	</body>
+</html>

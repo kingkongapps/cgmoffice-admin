@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript example</title>
+		<meta charSet="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<style media="only screen">
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            html {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                overflow: auto;
+            }
+
+            body {
+                padding: 1rem;
+                overflow: auto;
+            }
+        </style>
+	</head>
+	<body>
+		<div style="height: 10%">
+			<select id="currency" onchange="currencyChanged()">
+				<option value="EUR" selected>EUR</option>
+				<option value="GBP">GBP</option>
+				<option value="USD">USD</option>
+			</select>
+		</div>
+		<div style="height: 90%" id="myGrid" class="ag-theme-alpine">
+		</div>
+		<script>var __basePath = './';</script>
+		<script src="../../../ag-grid-community.min.js">
+		</script>
+		<script src="main.js">
+		</script>
+	</body>
+</html>

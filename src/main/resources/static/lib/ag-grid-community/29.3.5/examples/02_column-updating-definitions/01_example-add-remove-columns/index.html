@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript example</title>
+		<meta charSet="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<style media="only screen">
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            html {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                overflow: auto;
+            }
+
+            body {
+                padding: 1rem;
+                overflow: auto;
+            }
+        </style>
+		<link rel="stylesheet" href="styles.css"/>
+	</head>
+	<body>
+		<div class="test-container">
+			<div class="test-header">
+				<button onclick="onBtExcludeMedalColumns()">Exclude Medal Columns</button>
+				<button onclick="onBtIncludeMedalColumns()">Include Medal Columns</button>
+			</div>
+			<div id="myGrid" class="ag-theme-alpine test-grid">
+			</div>
+		</div>
+		<script>var __basePath = './';</script>
+		<script src="../../../ag-grid-community.min.js">
+		</script>
+		<script src="../../olympic-winners.js"></script>
+		<script src="main.js">
+		</script>
+	</body>
+	<link rel="stylesheet" href="styles.css"/>
+</html>

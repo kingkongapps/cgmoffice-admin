@@ -1,0 +1,140 @@
+<div id="SYS001003_P01" class="modal fade">
+	<script src="/static/admin/sys/SYS001003_P01.js"></script>
+
+	<div
+			class="modal-dialog modal-dialog-centered modal-xl"
+			tabindex="-1"
+		>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">
+					<span name="title">그룹선택</span>
+					<span name="pageCd" style="color: var(--bs-modal-header-bg);"></span>
+				</h1>
+				<button type="button" class="btn-close" onclick="SYS001003_P01.close()"></button>
+			</div>
+		    <div class="modal-body p-4" style="overflow-y: auto;">
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label" style="min-width: 100px;">상세코드<span class="text-danger ms-1">*</span></label>
+						<div style="display: flex; flex-direction: row">
+							<input type="text" maxlength="15" class="form-control" data-field="cd" name="cd" data-type="text" style="min-width: 20px; width: 100%;" onblur="SYS001003_P01.change()" disabled="false">
+							<input type="text" maxlength="15" class="form-control" data-field="cd" name="cdHidden" data-type="text" style="min-width: 20px; width: 100%; display:none;" >
+						</div>
+					</div>
+					<div class="col-md-6">
+					    <label class="form-label mb-2" style="min-width: 100px;"> 그룹코드 <span class="text-danger ms-1">*</span> </label>
+					    <div class="d-flex align-items-center gap-2">
+					        <input type="text" class="form-control" data-field="grpCd" name="grpCd" data-type="text" style="width: 30%;" disabled>
+					        <input type="text" class="form-control" data-field="grpCdNm" name="grpCdNm" data-type="text" style="width: 30%;" disabled>
+					        <button type="button" class="btn btn-primary" name="open" onclick="SYS001003_P01.P02_open()" style="min-width: 100px;"> 그룹조회 </button>
+					    </div>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label" style="min-width: 100px;">코드상세명<span class="text-danger ms-1">*</span></label>
+						<div style="display: flex; flex-direction: row">
+							<input type="text" maxlength="33" class="form-control" data-field="cdNm" name="cdNm" data-type="text" style="min-width: 20px; width: 100%;">
+						</div>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label" style="min-width: 100px;">사용여부<span class="text-danger ms-1">*</span></label>
+						<div style="display: flex; flex-direction: row">
+							<select class="datatable-selector" style="width: 100%;" name="useYn" data-type="useYn"  onchange="SYS001003_P01.change()">
+								<option value="Y">
+									사용
+								</option>
+								<option value="N">
+									미사용
+								</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label" style="min-width: 100px;">순서<span class="text-danger ms-1">*</span></label>
+						<div style="display: flex; flex-direction: row">
+							<input type="text" maxlength="2" class="form-control" data-field="sortNo" name="sortNo" data-type="text" style="min-width: 20px; width: 100%;">
+						</div>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label" style="min-width: 100px;">코드레벨<span class="text-danger ms-1">*</span></label>
+						<div style="display: flex; flex-direction: row">
+							<select class="datatable-selector" style="width: 100%;" name="levSeq" onchange="SYS001003_P01.change()">
+								<option value="1">
+									1
+								</option>
+								<option value="2">
+									2
+								</option>
+								<option value="3">
+									3
+								</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label" style="min-width: 100px;">필터내용</label>
+						<div style="display: flex; flex-direction: row">
+							<input type="text" maxlength="4" class="form-control" data-field="cdVal2" name="cdVal2" data-type="text" style="min-width: 20px; width: 100%;">
+						</div>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<label class="form-label" style="min-width: 100px;">기타</label>
+						<div style="display: flex; flex-direction: row">
+							<input type="text" maxlength="4" class="form-control" data-field="cdVal1" name="cdVal1" data-type="text" style="min-width: 20px; width: 100%;">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label" style="min-width: 100px;">비고</label>
+						<div style="display: flex; flex-direction: row">
+							<input type="text" maxlength="4" class="form-control" data-field="cdVal3" name="cdVal3" data-type="text" style="min-width: 20px; width: 100%;">
+						</div>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label" style="min-width: 100px;">코드상세</label>
+						<div style="display: flex; flex-direction: row">
+							<textarea class="form-control" maxlength="133" style="min-width: 20px; width: 100%;" rows="2" name="cdDesc" data-field="cdDesc" data-type="text"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-danger me-2"
+					name="save"
+					onclick="SYS001003_P01.save()"
+					style="min-width: 80px;"
+					data-auth="I"
+				>
+					저장
+				</button>
+				<button
+					type="button"
+					class="btn btn-primary"
+					name="cancel"
+					onclick="SYS001003_P01.close()"
+					style="min-width: 80px;"
+				>
+					닫기
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+

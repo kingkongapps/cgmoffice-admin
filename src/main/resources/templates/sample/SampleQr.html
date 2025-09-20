@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{sample/layouts/SampleDefaultLayout}"
+>
+<th:block layout:fragment="content">
+<h3>QR 샘플페이지</h3>
+<hr style="border: double;"/>
+
+<img src="" id="qrImg">
+
+<script th:inline="javascript">
+	window.addEventListener('load', () => {
+		getInfo();
+	});
+
+	const getInfo = async () => {
+		const response = await CMMN.api.get('/api/sample/qr');
+		document.getElementById('qrImg').src = `data:image/jpeg;base64,${response.data}`;
+	}
+
+</script>
+</th:block>
+</html>

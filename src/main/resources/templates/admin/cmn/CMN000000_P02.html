@@ -1,0 +1,78 @@
+<div id="CMN000000_P02" class="modal fade">
+	<script src="/static/admin/cmn/CMN000000_P02.js"></script>
+	
+	<div 
+		class="modal-dialog modal-dialog-centered modal-lg"
+		tabindex="-1" 
+	>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">
+					<span name="title">약관파일선택</span>
+					<span name="pageCd" style="color: var(--bs-modal-header-bg);"></span>
+				</h1>
+				<button 
+					type="button" 
+					class="btn-close" 
+					onclick="CMN000000_P02.close()"
+				>
+				</button>
+			</div>
+			<div class="modal-body p-4" style="height: 450px;">
+				<div class="row mb-2">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-12 d-flex align-items-start">
+								<input 
+									type="text" 
+									class="form-control me-2" 
+									name="fileNm" 
+									placeholder="검색할 약관파일명"
+									onkeyup="if(event.key === 'Enter') CMN000000_P02.search()"
+								/>
+								<button 
+									class="btn btn-primary me-1" 
+									style="width: 80px;" 
+									onclick="CMN000000_P02.search()"
+								>
+									검색
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col-md-12">
+						<div class="datatable-wrapper">
+							<div 
+								class="datatable-container ag-theme-alpine" 
+								name="table-content"
+								style="height: 300px;"
+							>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col-md-12 d-flex justify-content-end">
+						<button 
+							class="btn btn-danger me-2" 
+							style="width: 80px;" 
+							onclick="CMN000000_P02.close()"
+						>
+							닫기
+						</button>
+						<button 
+							class="btn btn-primary" 
+							style="width: 80px;" 
+							onclick="CMN000000_P02.confirm()"
+						>
+							선택
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>

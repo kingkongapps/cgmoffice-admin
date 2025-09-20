@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript example</title>
+		<meta charSet="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<style media="only screen">
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            html {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                overflow: auto;
+            }
+
+            body {
+                padding: 1rem;
+                overflow: auto;
+            }
+        </style>
+		<link rel="stylesheet" href="styles.css"/>
+	</head>
+	<body>
+		<div class="test-container">
+			<div class="test-header">
+				<div>Include NULL<br>in date:</div>
+				<div class="configuration-option">
+					<div>
+						<strong>equals</strong>
+					</div>
+					<div>
+						<label>
+							<input type="radio" name="equals" value="false" checked onclick="changeNull(&#x27;equals&#x27;, false)">
+          false
+        </label>
+							<label>
+								<input type="radio" name="equals" value="true" onclick="changeNull(&#x27;equals&#x27;, true)">
+          true
+        </label>
+							</div>
+						</div>
+						<div class="configuration-option">
+							<div>
+								<strong>lessThan</strong>
+							</div>
+							<div>
+								<label>
+									<input type="radio" name="lessThan" value="false" checked onclick="changeNull(&#x27;lessThan&#x27;, false)">
+          false
+        </label>
+									<label>
+										<input type="radio" name="lessThan" value="true" onclick="changeNull(&#x27;lessThan&#x27;, true)">
+          true
+        </label>
+									</div>
+								</div>
+								<div class="configuration-option">
+									<div>
+										<strong>greaterThan</strong>
+									</div>
+									<div>
+										<label>
+											<input type="radio" name="greaterThan" value="false" checked onclick="changeNull(&#x27;greaterThan&#x27;, false)">
+          false
+        </label>
+											<label>
+												<input type="radio" name="greaterThan" value="true" onclick="changeNull(&#x27;greaterThan&#x27;, true)">
+          true
+        </label>
+											</div>
+										</div>
+										<div class="configuration-option">
+											<div>
+												<strong>inRange</strong>
+											</div>
+											<div>
+												<label>
+													<input type="radio" name="inRange" value="false" checked onclick="changeNull(&#x27;inRange&#x27;, false)">
+          false
+        </label>
+													<label>
+														<input type="radio" name="inRange" value="true" onclick="changeNull(&#x27;inRange&#x27;, true)">
+          true
+        </label>
+													</div>
+												</div>
+											</div>
+											<div id="myGrid" class="ag-theme-alpine" style="height: 88%">
+											</div>
+										</div>
+										<script>var __basePath = './';</script>
+										<script src="../../../ag-grid-community.min.js">
+										</script>
+										<script src="main.js">
+										</script>
+									</body>
+									<link rel="stylesheet" href="styles.css"/>
+								</html>

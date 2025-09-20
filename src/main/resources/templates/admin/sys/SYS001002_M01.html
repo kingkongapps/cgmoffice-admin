@@ -1,0 +1,154 @@
+<div id="SYS001002_M01">
+	<script src="/static/admin/sys/SYS001002_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-4">
+	    <div class="card-body">
+	        <div class="datatable-wrapper">
+				<div class="row" name="grpCd_01">
+					<div class="col-md-3 my-2">
+						<select data-auth="S" class="datatable-selector" style="width: 100%;" name="searchClcd" onchange="SYS001002_M01.change()" >
+							<option value="1">
+								그룹코드
+							</option>
+							<option value="2">
+								그룹명
+							</option>
+						</select>
+					</div>
+					<div class="col-md-7 my-2">
+						<input type="text"
+							class="form-control"
+							style="width: 100%;"
+							name="searchData"
+							placeholder="검색어를 입력해주세요"
+							onkeyup="if(event.key === 'Enter') SYS001002_M01.search()"
+							data-auth="S"
+							maxlength="1000"
+						>
+					</div>
+					<div class="col-md-2 my-2 d-flex">
+						<button class="btn btn-primary me-1" style="width: 80px; height:38px;" onclick="SYS001002_M01.search()">검색</button>
+					</div>
+				</div>
+
+				<!--총건수-->
+				<h6 name="SYS001002_M01_totalCount" class="mt-3"></h6>
+
+				<div
+					class="datatable-container ag-theme-alpine"
+					name="table-content"
+					style="height: 480px;"
+				>
+				</div>
+
+				<div class="mt-3 d-flex">
+					<button
+						type="button"
+						class="btn btn-success ms-auto"
+						name="new"
+						onclick="SYS001002_M01.insert()"
+						style="min-width: 80px;"
+						data-auth="I"
+					>
+						신규등록
+					</button>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+	<div class="card mb-4" style="display: none;" name="grpCdDtl_01">
+		<div class="card-header">
+			그룹코드 상세정보
+			<button
+				type="button"
+				class="btn btn-secondary me-1 btn-sm float-end"
+				name="new"
+				onclick="SYS001002_M01.insert()"
+				style="min-width: 80px;"
+				data-auth="I"
+			>
+				초기화
+			</button>
+		</div>
+	    <div class="card-body">
+			<div class="row mb-3">
+				<div class="col-md-6">
+				  <label class="form-label mb-2">그룹코드<span class="text-danger ms-1">*</span></label>
+				  <div class="d-flex align-items-center gap-2">
+				    <input type="text"  maxlength="50" class="form-control" name="grpCd" data-field="grpCd" data-type="text" onblur="SYS001002_M01.grpCdChange()" style="flex: 1; max-width: 400px;">
+				    <button class="btn btn-secondary" name="grpCdChk" style="min-width: 100px;" onclick="SYS001002_M01.check()"> 중복확인 </button>
+				    <input type="text"  maxlength="50" class="form-control" name="grpCdHidden"  data-field="grpCd"  data-type="text" style="display: none;">
+				  </div>
+				</div>
+
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-6">
+					<label class="form-label">그룹명<span class="text-danger ms-1">*</span></label>
+					<input type="text" maxlength="33" class="form-control" name="grpCdNm" data-field="grpCdNm" data-type="text">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-6">
+					<label class="form-label" style="min-width: 100px;">사용여부<span class="text-danger ms-1">*</span></label>
+					<div style="display: flex; flex-direction: row">
+						<select class="datatable-selector" style="width: 100%;" name="useYn" data-field="useYn" >
+							<option value="Y">
+								사용
+							</option>
+							<option value="N">
+								미사용
+							</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-10">
+					<label class="form-label">그룹상세설명<span class="text-danger ms-1">*</span></label>
+					<textarea class="form-control" maxlength="250" rows="2" name="grpDesc" data-field="grpDesc" data-type="text"></textarea>
+				</div>
+			</div>
+			<div class="d-flex justify-content-end">
+				<button
+					type="button"
+					class="btn btn-primary me-2"
+					name="save"
+					onclick="SYS001002_M01.save()"
+					style="min-width: 80px;"
+					data-auth="I"
+				>
+					저장
+				</button>
+				<button
+					type="button"
+					class="btn btn-danger me-1"
+					name="delete"
+					onclick="SYS001002_M01.delete()"
+					style="min-width: 80px;"
+					data-auth="D"
+				>
+					삭제
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+

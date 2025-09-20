@@ -1,0 +1,100 @@
+<div id="SYS004003_M01">
+	<script src="/static/admin/sys/SYS004003_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-4">
+	    <div class="card-body">
+	        <div class="datatable-wrapper">
+				<div class="row" name="errLogHist_01">
+
+					<div class="col-md-6 my-2" style="width: auto;">
+					  <label class="form-label" style="min-width: 100px;">발생일자</label>
+					  <div class="d-flex align-items-center">
+					    <input
+					      type="text"
+					      class="form-control me-2"
+					      name="startDate"
+					      placeholder="시작일자"
+					      data-field="startDate"
+					      data-type="date"
+					      style="max-width: 150px;"
+					      onkeyup="CMMN.onlyDateFormat(this)"
+						  data-auth="S"
+					    />
+					    <span class="mx-1">~</span>
+					    <input
+					      type="text"
+					      class="form-control"
+					      name="endDate"
+					      placeholder="종료일자"
+					      data-field="endDate"
+					      data-type="date"
+					      style="max-width: 150px;"
+					      onkeyup="CMMN.onlyDateFormat(this)"
+						  data-auth="S"
+					    />
+					  </div>
+					</div>
+					<div class="col-md-4 my-2">
+						<label class="form-label" style="min-width: 100px;">처리구분</label>
+						<select data-auth="S" class="datatable-selector" style="width: 100%;" name="searchClcd">
+							<option value="0">
+								전체
+							</option>
+							<option value="1">
+								조회
+							</option>
+							<option value="2">
+								등록
+							</option>
+							<option value="3">
+								삭제
+							</option>
+							<option value="4">
+								수정
+							</option>
+							<option value="5">
+								처리
+							</option>
+						</select>
+					</div>
+					<div class="col-md-2 my-2 d-flex align-items-end">
+						<button data-auth="S" class="btn btn-primary me-1" style="width: 80px; height:38px;" onclick="SYS004003_M01.pageToFirst()">검색</button>
+					</div>
+				</div>
+
+				<!--총건수-->
+				<h6 name="SYS004003_M01_totalCount" class="mt-3"></h6>
+
+				<div
+					class="datatable-container ag-theme-alpine"
+					name="table-content"
+					style="height: 480px;"
+				>
+				</div>
+
+				<div
+					class="datatable-bottom position-relative mt-3"
+				>
+					<nav class="datatable-pagination">
+						<ul
+							class="datatable-pagination-list d-flex align-items-center mb-0"
+							name="paginator"
+						>
+
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{sample/layouts/SampleDefaultLayout}"
+>
+<th:block layout:fragment="content">
+<h3>파일관리 샘플페이지</h3>
+<hr style="border: double;"/>
+<div>
+	<button onclick="getList()">조회</button>
+	<hr/>
+	메모 : <input type="text" id="memo01" />
+	<br/>
+	첨부파일선택 : <input type="file" id="attachFile" /><br/>
+	<button style="margin-top: 10px;" onclick="fileUp()">파일업로드</button>
+	<hr/>
+	<table>
+		<tbody id="fileinfolist">
+		</tbody>
+	</table>
+</div>
+<style>
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	td {
+		padding: 5px;
+	}
+</style>
+<script>
+
+	async function getList() {
+		const response = await CMMN.api.get('/api/sample/fileMng/getList');
+		console.log(response);
+
+		document.getElementById('fileinfolist').innerHTML
+			= response.data.reduce((prev, curr) => {
+				return prev += `
+					<tr>
+						<td>${curr.memo}</td>
+						<td>${curr.fileNm}</td>
+						<td><button onclick="filedn('${curr.fileNo}')">다운로드</button></td>
+						<td><button onclick="delFileInfo('${curr.idx}')">삭제</button></td>
+					</tr>
+				`
+			},'')
+	}
+
+	async function fileUp() {
+		const attachFile = document.getElementById("attachFile").files[0];
+		const memo01 = document.getElementById("memo01").value;
+
+		if(!attachFile) {
+			await CMMN.alert("업로드할 파일을 선택해 주세요.");
+			return;
+		}
+		if(!memo01) {
+			await CMMN.alert("메모를 입력해 주세요.");
+			return;
+		}
+
+		const params = {
+			attachFile,
+			memo: memo01,
+			testData: {
+				aaa: '123',
+			},
+		}
+		await CMMN.api.post('/api/sample/fileMng/fileUp', { params });
+		getList();
+	}
+	
+	async function delFileInfo(idx) {
+		await CMMN.api.delete(`/api/sample/fileMng/delete?idx=${idx}`);
+		getList();
+	}
+
+	function filedn(fileNo) {
+		CMMN.downloadfile(fileNo);
+	}
+
+</script>
+</th:block>
+</html>

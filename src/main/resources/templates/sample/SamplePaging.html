@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{sample/layouts/SampleDefaultLayout}"
+>
+<th:block layout:fragment="content">
+<h3>페이징 샘플페이지</h3>
+<hr style="border: double;"/>
+<div>
+	<h4>데이터</h4>
+	<ul id="listul">
+	</ul>
+</div>
+<div>
+	<h4>페이징정보</h4>
+	<ul id="paginginfoul">
+	</ul>
+</div>
+<hr/>
+<div>
+	<button onclick="search01()">기본조회</button>
+</div>
+<hr/>
+<div>
+	조회용 사용자명: <input type="text" id="userName" value="김" /><br/>
+	- 페이징정보 page: <input type="text" id="page" value="1" /><br/>
+	- 페이징정보 order target: <input type="text" id="target" value="userName" /><br/>
+	- 페이징정보 order isAsc:
+	<select id="isAsc">
+		<option value='Y' selected>Y</option>
+		<option value='N'>N</option>
+	</select>
+	<br/><br/>
+	<button onclick="search02()">조건 조회</button>
+</div>
+
+<script th:inline="javascript">
+	
+	const pageConfig = {
+		page: 1,
+		orders: [
+			{
+				target: "userName",
+				isAsc: true,
+			}
+		]
+	}
+	
+	async function search01() {
+
+		const options = { pageConfig };
+
+		const response = await CMMN.api.get('/api/sample/paging/getList', options);
+		console.log(response);
+
+		displayInfo(response.data);
+	}
+
+	async function search02() {
+		const page = document.querySelector('#page').value;
+		const target = document.querySelector('#target').value;
+		const isAsc = document.querySelector('#isAsc').value === 'Y' ? true : false;
+
+		pageConfig.page = page;
+		pageConfig.orders[0].target = target;
+		pageConfig.orders[0].isAsc = isAsc;
+		
+		const params = {};
+		const userName = document.querySelector('#userName').value;
+		params.userName = userName;
+		
+		const options = { pageConfig, params };
+
+		const response = await CMMN.api.get('/api/sample/paging/getList', options);
+		console.log(response);
+		
+		displayInfo(response.data);
+	}
+	
+	function displayInfo(data) {
+		// 조회결과 데이터 표시하기
+		const list = data.list;
+		document.querySelector('#listul').innerHTML
+			= list.reduce((prev, curr) => {
+				return prev += `
+					<li>
+						이름 (${curr.userName}),  나이 (${curr.userAge})
+					</li>
+				`;
+			}, '');
+
+		// 페이징정보 표시하기
+		document.querySelector('#paginginfoul').innerHTML
+			= Object.entries(pageConfig.pagingInfo).reduce((prev, curr) => {
+				const key = curr[0];
+				const value = curr[1];
+				return prev += `
+					<li>
+						${key}: ${value}
+					</li>
+				`;
+			}, '');	
+	}
+
+</script>
+</th:block>
+</html>

@@ -1,0 +1,109 @@
+<div id="FLE001001_M01">
+	<script src="/static/admin/fle/FLE001001_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+	<div class="card mb-4">
+		<div class="card-header">
+			파일목록
+		</div>
+		<div class="card-body">
+			<div class="datatable-wrapper">
+				<div class="datatable-top">
+					<div
+						style="display: flex;"
+					>
+						<input type="text"
+							class="form-control"
+							name="fileNm"
+							style="width: 300px;" placeholder="검색할 파일명"
+							onkeyup="if(event.key === 'Enter') FLE001001_M01.pateToFirst()"
+							data-auth="S"
+							maxlength="1000"
+						/>
+						<button class="btn btn-primary ms-2" style="width: 80px;" onclick="FLE001001_M01.pateToFirst()" data-auth="S">검색</button>
+					</div>
+					<div
+						style="display: flex;justify-content:flex-end;"
+					>
+						<button
+							class="btn btn-secondary me-2"
+							onclick="FLE001001_M01.P01_open()"
+							data-auth="U"
+						>
+							약관항목파일생성
+						</button>
+						<button
+							class="btn btn-secondary me-2"
+							onclick="document.querySelector(`#FLE001001_M01 [name='pdf-up']`).click()"
+							data-auth="U"
+						>
+							파일업로드
+						</button>
+						<input
+							type="file"
+							name="pdf-up"
+							style="display: none;"
+							accept=".pdf"
+							multiple
+							onchange="FLE001001_M01.pdfUp()"
+							data-auth="U"
+						/>
+						<button
+							class="btn btn-secondary me-2"
+							onclick="FLE001001_M01.P04_open()"
+							data-auth="I"
+						>
+							페이지만들기
+						</button>
+						<input
+							type="file"
+							name="pdf-splitzipdn"
+							style="display: none;"
+							accept=".pdf"
+							multiple
+							onchange="FLE001001_M01.splitZipDn()"
+							data-auth="S"
+						/>
+					</div>
+				</div>
+
+				<div
+					class="datatable-container ag-theme-alpine"
+					name="table-content"
+					style="height: 480px;"
+				>
+				</div>
+
+				<div
+					class="datatable-bottom position-relative mt-3"
+				>
+					<button
+						class="btn btn-danger w-80px"
+						onclick="FLE001001_M01.delete()"
+						data-auth="D"
+					>
+						삭제
+					</button>
+					<nav class="datatable-pagination">
+						<ul
+							class="datatable-pagination-list d-flex align-items-center mb-0"
+							name="paginator"
+						>
+
+						</ul>
+					</nav>
+					<div id="FLE001001_M01_totalCount"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

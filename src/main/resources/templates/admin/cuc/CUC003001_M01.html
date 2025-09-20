@@ -1,0 +1,66 @@
+<div id="CUC003001_M01">
+	<script src="/static/admin/cuc/CUC003001_M01.js"></script>
+
+	<div class="ly_table_bx">
+		<h1 class="mt-2">
+			<span name="menunm"></span>
+			<span name="pageCd" style="color: var(--bs-body-bg);"></span>
+		</h1>
+		<div class="pos_right">
+			<ol class="breadcrumb mb-4" id="breadcrumb_ol"></ol>
+		</div>
+	</div>
+
+
+	<div class="card mb-2">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-5 my-2">
+					<label class="form-label">약관번호입력</label>
+					<input
+						type="text"
+						class="form-control"
+						data-field="mxtrClusCd"
+						name="mxtrClusCd"
+						placeholder="약관번호 입력 (예시 : P07C0111-FFFE-20250709)"
+						onkeydown="if(event.keyCode == '13'){CUC003001_M01.search();}"
+						data-auth="S"
+						maxlength="50"
+					/>
+				</div>
+				<div class="col-md-1 my-3 d-flex align-items-end" style="display: flex;justify-content:flex-end;">
+					<button class="btn btn-primary me-1" style="width: 120px; height: 38px;" onclick="CUC003001_M01.search()" data-auth="S">확인</button>
+				</div>
+				<div class="col-md-6 my-3">
+					<label class="form-label"></label>
+					<input
+						type="text"
+						class="form-control"
+						data-field="clusItmNm"
+						name="clusItmNm"
+						disabled
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="card mb-4">
+		<div class="card-body">
+			<div class="datatable-wrapper">
+				<div class="col-md-12 my-2 d-flex align-items-end" style="display: flex;justify-content:flex-end;">
+					<button class="btn btn-primary me-1" style="width: 120px; height: 38px;" onclick="CUC003001_M01.procIndvClusCrtmx()" data-auth="S">미리보기</button>
+				</div>
+				<!--총건수-->
+				<h6 name="CUC003001_M01_totalCount" class="mt-3"></h6>
+				<div
+					class="datatable-container ag-theme-alpine"
+					name="table-content"
+					style="height: 400px;"
+				>
+				</div>
+			</div>
+		</div>
+
+</div>

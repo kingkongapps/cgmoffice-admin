@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript example</title>
+		<meta charSet="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<style media="only screen">
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            html {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                overflow: auto;
+            }
+
+            body {
+                padding: 1rem;
+                overflow: auto;
+            }
+        </style>
+		<link rel="stylesheet" href="styles.css"/>
+	</head>
+	<body>
+		<div class="example-wrapper">
+			<div class="example-header">
+				<div style="padding: 4px">
+					<button onclick="clearPinned()">Clear Pinned</button>
+					<button onclick="resetPinned()">
+        Left = #, Athlete, Age; Right = Total
+      </button>
+					<button onclick="pinCountry()">Left = Country</button>
+				</div>
+				<div style="padding: 4px">
+      Jump to:
+      <input placeholder="row" type="text" style="width: 40px" id="row" oninput="jumpToRow()">
+				<input placeholder="col" type="text" style="width: 40px" id="col" oninput="jumpToCol()">
+				</div>
+			</div>
+			<div id="myGrid" class="ag-theme-alpine">
+			</div>
+		</div>
+		<script>var __basePath = './';</script>
+		<script src="../../../ag-grid-community.min.js">
+		</script>
+		<script src="../../olympic-winners.js"></script>
+		<script src="main.js">
+		</script>
+	</body>
+	<link rel="stylesheet" href="styles.css"/>
+</html>

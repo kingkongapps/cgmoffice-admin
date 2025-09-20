@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lagn="ko"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+	<th:block th:replace="~{admin/_common/fragments/CommonHead}"></th:block>
+
+	<body class="">
+		<div id="layoutSingle">
+		    <div id="layoutSingle_content">
+				<main>
+					<div class="container" id="layoutContent">
+					    <th:block layout:fragment="content"></th:block>
+					</div>
+				</main>
+			</div>
+			<div id="layoutSingle_footer">
+			    <footer class="py-4 bg-light mt-auto">
+			        <div class="container-fluid px-4">
+						<div class="d-flex align-items-center justify-content-end small">
+				            <div class="text-muted"> &copy; 2025 진솔아이엔에스. All Rights Reserved.</div>
+				        </div>
+			        </div>
+			    </footer>
+			</div>
+		</div>
+		<div id="layoutInclude">
+		</div>
+		<th:block th:replace="~{admin/_common/fragments/CommonComponets}"></th:block>
+	</body>
+</html>
