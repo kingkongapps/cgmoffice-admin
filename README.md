@@ -33,6 +33,8 @@ Reason: Failed to determine a suitable driver class
 
 ```
 
+---
+
 ### ERROR-3 : *.java / *.xml 안의 패키지 경로 오류
 * 해결 : com.cgm.xxx -> com.cgmoffice.xxx 로 수정한다.
   * pom.xml 에서 아래 resources 위치로 설정 추가 , 즉 *.xml을 main/java 밑에서 찾으라고 알려줌.
@@ -49,6 +51,9 @@ Reason: Failed to determine a suitable driver class
 	        </resource>
 	    </resources>
 ```
+
+---
+
 ### ERROR-4 : 하드코딩 된 경로 오류 
 * 원인 : ./main/java/com/cgmoffice/core/datasource_utils/mybatis/MybatisSettingConstants.java 안의 하드코딩된 경로 참조로 오류.
 * 해결 : classpath:com/cgm/ -> classpath:com/cgmoffice/ 로 수정
@@ -57,6 +62,8 @@ Caused by: java.io.FileNotFoundException: class path resource [com/cgm/core/data
 	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:215)
 	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:600)
 ```
+
+---
 
 ### ERROR-5 : BeanInstantiationException
 * 원인 : ./main/java/com/cgmoffice/core/datasource_utils/core/DataSourceCore.java 에 *_SQL.xml 경로가 하드코딩 되어 있음
@@ -81,6 +88,8 @@ pisnetdev2023@pisnetdev2023ui-MacBookAir src % find . -name "*.java" -exec grep 
     <version>1.9.22.1</version>
 </dependency>
 ```
+
+---
 
 ### ERROR-6 : No static resource css/styles_JSOL.css
 * 원인 : /static/css/ 디렉토리 아래에 없음.
